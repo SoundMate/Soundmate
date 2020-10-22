@@ -22,7 +22,7 @@ public class LandingLoginController {
 
         if(event.getSource() == joinNowBtn) {
             Stage stage = (Stage) joinNowBtn.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/register.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/Register.fxml"));
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);

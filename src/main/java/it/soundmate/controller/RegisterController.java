@@ -30,7 +30,7 @@ public class RegisterController {
     @FXML
     void handleBackClick(MouseEvent event) throws Exception {
         Stage stage = (Stage) backBtn.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/landing_login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/LandingLogin.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -41,7 +41,7 @@ public class RegisterController {
     void handleButtonAction(ActionEvent event) throws IOException {
         if (event.getSource() == bandRegisterBtn) {
             Stage stage = (Stage) bandRegisterBtn.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/register_band.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/RegisterBand.fxml"));
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
