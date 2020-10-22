@@ -12,7 +12,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.rmi.server.ExportException;
 
 public class RegisterController {
 
