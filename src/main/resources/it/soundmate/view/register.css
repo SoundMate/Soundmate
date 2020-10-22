@@ -1,0 +1,27 @@
+@font-face {
+	src: url('../fonts/Montserrat-Bold.ttf');
+}
+
+.background {
+    -fx-background-image: url("../images/bg.png");
+    -fx-background-size: cover;
+}
+
+.btn {
+    -fx-font-family: "Montserrat";
+    -fx-font-size: 18;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: fit;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.btn-band {
+    -fx-background-image: url("../images/band-register-resized.png");
+}
+
+.btn-solo {
+    -fx-background-image: url("../images/solo-register-resized.png");
+}

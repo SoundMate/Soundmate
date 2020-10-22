@@ -1,0 +1,37 @@
+@font-face {
+	src: url('../fonts/Montserrat-Bold.ttf');
+}
+
+.background {
+    -fx-background-image: url("../images/bg.png");
+    -fx-background-size: cover;
+}
+
+.main-label{
+    -fx-font-family: "Montserrat";
+    -fx-font-size: 22;
+}
+
+.btn {
+	-fx-font-family: "Montserrat";
+	-fx-font-size: 12;
+	-fx-background-color: #00B540;
+	-fx-border-radius: 5;
+	-fx-background-radius: 5;
+}
+
+.main-btn {
+	-fx-font-size: 13;
+}
+
+.form-field {
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-background-color: #BCBCBC;
+    -fx-color: black;
+    -fx-font-family: "Montserrat";
+}
+
+.form-labels {
+    -fx-font-family: "Montserrat";
+}

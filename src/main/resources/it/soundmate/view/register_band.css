@@ -1,0 +1,57 @@
+@font-face {
+	src: url('../fonts/Montserrat-Bold.ttf');
+}
+
+.background {
+    -fx-background-image: url("../images/register-band-bg.png");
+    -fx-background-size: cover;
+}
+
+.main-background {
+    -fx-background-color: #464646;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+}
+
+.band-registration {
+    -fx-font-family: "Montserrat";
+    -fx-font-size: 19;
+}
+
+.manager-label {
+    -fx-font-family: "Montserrat";
+    -fx-font-size: 16;
+}
+
+.field-labels {
+    -fx-font-family: "Montserrat";
+    -fx-font-size: 10;
+}
+
+.continue-btn {
+	-fx-font-family: "Montserrat";
+	-fx-font-size: 10;
+	-fx-background-color: #00B540;
+	-fx-border-radius: 5;
+	-fx-background-radius: 5;
+}
+
+.band-name-field{
+    -fx-background-color: transparent;
+    -fx-font-family: "Montserrat";
+}
+
+.add-image-btn {
+    -fx-background-color: black;
+    -fx-font-family: "Montserrat";
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.fields {
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-background-color: #BCBCBC;
+    -fx-color: black;
+    -fx-font-family: "Montserrat";
+}
