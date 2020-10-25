@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@register_band.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@register_band.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.soundmate.controller.RegisterBandController">
    <top>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -42,8 +41,8 @@
                <children>
                   <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="175.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button mnemonicParsing="false" styleClass="add-image-btn" stylesheets="@register_band.css" text="Add profile picture" textFill="WHITE">
+                        <ImageView fx:id="imgViewProfile" fitHeight="175.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="addProfilePicBtn" mnemonicParsing="false" onAction="#handleButtonAction" styleClass="add-image-btn" stylesheets="@register_band.css" text="Add profile picture" textFill="WHITE">
                            <font>
                               <Font size="10.0" />
                            </font>
@@ -117,7 +116,7 @@
                   </VBox>
                   <Region prefHeight="200.0" prefWidth="200.0" />
                   <Region prefHeight="200.0" prefWidth="200.0" />
-                  <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="383.0" styleClass="continue-btn" stylesheets="@register_band.css" text="Continue" textFill="WHITE" />
+                  <Button fx:id="continueBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="22.0" prefWidth="383.0" styleClass="continue-btn" stylesheets="@register_band.css" text="Continue" textFill="WHITE" />
                </children>
                <BorderPane.margin>
                   <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
