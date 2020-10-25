@@ -1,8 +1,10 @@
 package it.soundmate.controller;
 
+import it.soundmate.utils.ImagePicker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
@@ -37,18 +39,36 @@ public class RegisterBandController {
 
     @FXML
     void handleButtonAction(ActionEvent event) {
+
+        /*
+        * Add profile picture Button
+        *
+        * Open the system file chooser and pick an image
+        * then add it to the image view beyond the button.
+        * Update the button text to "Change image".
+        * */
+
         if (event.getSource() == addProfilePicBtn) {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Choose an image");
-            File file = fileChooser.showOpenDialog(addProfilePicBtn.getScene().getWindow());
-            if (file != null) {
-                try {
-                    this.desktop.open(file);  //Funziona
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    System.out.println(e.getMessage());
-                }
+            ImagePicker imagePicker = new ImagePicker();
+            int imgResult = imagePicker.chooseImage(imgViewProfile);
+            if (imgResult == 0) {
+                //this.desktop.open(file);  //Funziona
+                addProfilePicBtn.setText("Change image");
+            } else {
+                System.out.println("Error uploading image\n");
             }
+        }
+
+        /*
+        * Continue Button
+        *
+        * Check if the fields are not empty or
+        * there's some error in them.
+        * If there's not then launch the second registration page.
+        * */
+
+        else if (event.getSource() == continueBtn) {
+            //TODO: Implement Continue Button;
         }
     }
 }
