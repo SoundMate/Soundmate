@@ -1,5 +1,7 @@
 package it.soundmate.controller;
 
+import java.io.IOException;
+
 import it.soundmate.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +20,7 @@ public class LandingLoginController {
     private Button loginBtn;
 
     @FXML
-    private void handleButtonAction (ActionEvent event) throws Exception {
+    private void handleButtonAction (ActionEvent event) throws IOException {
 
         if(event.getSource() == joinNowBtn) {
             Stage stage = (Stage) joinNowBtn.getScene().getWindow();

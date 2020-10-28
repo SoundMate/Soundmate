@@ -52,7 +52,7 @@ public class RegisterBandController {
         * */
 
         else if (event.getSource() == continueBtn) {
-            //TODO: Implement Continue Button;
+            //TODO: Implement Continue Button
         }
     }
 }
