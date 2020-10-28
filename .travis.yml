@@ -1,4 +1,11 @@
 language: java
-jdk:
- -openjdk14
-script: mvn install
+jdk: "-openjdk14"
+addons:
+  sonarcloud:
+    organization: "soundmate"
+    token:
+      secure: "MK3TobQEVKmkOcqMg0fMKi46ylHzJyWotPvX6AqHGbu6+04heILoC2XR3Poo1jFGDgZ9/u7sTPupqXLkREP86k05tWv1nTjPP1SOMdmXca2hlfZN9t55q56jWW21hsYCeaOLv/PInReN9couJbl9qyfIS33fI+q4q4cBOEF07Mk7u3XncjKFbQ4ZTQEPWbpyeXT560PSoQouVI0yxySgbbODoTwrI6qekKj5VUye0EOxxD70dTIvLM6GqHWx4IRXZeMTB0DEMFppOJGvpUM9uWnQMgNvWtwFacGC2952ff76ndmiDt7SJP7Gbg9LOdOjkYy5LpMBPoxxGzYdTDaxX2DqLSl7wonaf8/kvmljYEUzfyEmsdjo8TkXSuAeZmNw8FyMl/JzSosfr0zZT+0SdOY5B0PnJDm4ID4TYqi0KyP08XkStXWLqzCO4UyRseraSDkeCx1RQzJdj0g5iJHGP/5VcrCNd0mitBiVxEFwNErvnA63hjFqCDuVbbKH3H+fJcbv70xOTHypBGxuS0vWncmwN8WTFlHJpvo022FyrN/oiYSQP2yYndhR9Bfync58krQMDkr+TDuo8aZDIgP+tf7cF/ED2doKqEySlZ+DDh6/nk0+RAO/owRCYaw64FTrY63gZk24lzNsaVEMdc22J4+5NFQNYMJiusaPFC4LK7U=s" # encrypted value of your token
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=SoundMate_Soundmate
