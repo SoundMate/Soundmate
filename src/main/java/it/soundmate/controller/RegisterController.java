@@ -28,7 +28,7 @@ public class RegisterController {
     private Button soloRegisterBtn;
 
     @FXML
-    void handleBackClick(MouseEvent event) throws Exception {
+    void handleBackClick(MouseEvent event) throws IOException {
         Stage stage = (Stage) backBtn.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/LandingLogin.fxml"));
         Parent root = fxmlLoader.load();
