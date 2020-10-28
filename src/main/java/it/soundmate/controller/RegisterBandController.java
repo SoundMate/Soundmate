@@ -4,21 +4,14 @@ import it.soundmate.utils.ImagePicker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
 
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class RegisterBandController {
 
-    /*
-    * The Desktop class if platform dependent
-    * To check if is supported by OS use the static method Desktop.isDesktopSupported()
-    * */
-    private Desktop desktop;
+    private final Logger logger = Logger.getLogger(RegisterBandController.class.getName());
 
     @FXML
     private ImageView imgViewProfile;
@@ -28,14 +21,6 @@ public class RegisterBandController {
 
     @FXML
     private Button continueBtn;
-
-    public RegisterBandController() {
-        if (Desktop.isDesktopSupported()) {
-            this.desktop = Desktop.getDesktop();
-        } else {
-            //TODO: Handle desktop not supported
-        }
-    }
 
     @FXML
     void handleButtonAction(ActionEvent event) {
@@ -52,10 +37,9 @@ public class RegisterBandController {
             ImagePicker imagePicker = new ImagePicker();
             int imgResult = imagePicker.chooseImage(imgViewProfile);
             if (imgResult == 0) {
-                //this.desktop.open(file);  //Funziona
                 addProfilePicBtn.setText("Change image");
             } else {
-                System.out.println("Error uploading image\n");
+                logger.log(Level.WARNING, "Error uploading image");
             }
         }
 
