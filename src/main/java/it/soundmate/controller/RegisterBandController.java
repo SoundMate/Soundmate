@@ -51,8 +51,5 @@ public class RegisterBandController {
         * If there's not then launch the second registration page.
         * */
 
-        else if (event.getSource() == continueBtn) {
-            //TODO: Implement Continue Button
-        }
     }
 }

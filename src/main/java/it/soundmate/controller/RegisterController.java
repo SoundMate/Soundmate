@@ -47,9 +47,6 @@ public class RegisterController {
             stage.setScene(scene);
             stage.show();
         }
-        else if (event.getSource() == soloRegisterBtn) {
-            //TODO: Implement Solo registration Page
-        }
     }
 
     @FXML

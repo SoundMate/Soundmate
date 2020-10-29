@@ -30,11 +30,6 @@ public class LandingLoginController {
             stage.setScene(scene);
             stage.show();
         }
-        else if (event.getSource() == loginBtn){
-            //TODO: Implement Login
-        }
-
-
     }
 
 }
