@@ -10,57 +10,54 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@info.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.soundmate.controller.InfoController">
-   <center>
-      <HBox alignment="CENTER" prefWidth="600.0" spacing="50.0" BorderPane.alignment="CENTER">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@register.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.soundmate.controller.InfoController">
+   <top>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox spacing="15.0">
+            <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label styleClass="labels" stylesheets="@info.css" text="Band" textFill="WHITE" />
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: &quot;Montserrat&quot;;" styleClass="text" text="Register as a band manager to promote &#10;your music and search for new musicians.&#10;You can manage your musicians, accept&#10;or decline solo musicians who want to&#10;join your band and send invitations to them." />
+                  <ImageView fx:id="backBtn" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#handleBackButtonClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/left-arrow-white.png" />
+                     </image>
+                  </ImageView>
+                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                </children>
-            </VBox>
-            <VBox spacing="15.0">
-               <children>
-                  <Label styleClass="labels" stylesheets="@info.css" text="Solo" textFill="WHITE" />
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: &quot;Montserrat&quot;;" styleClass="text" text="Register as a solo to promote yourself and &#10;search for a band to play with, &#10;or start your own. You can send requests&#10;to join bands and recieve band offers" />
-               </children>
-            </VBox>
+            </HBox>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo-vertical.png" />
+               </image>
+            </ImageView>
          </children>
          <BorderPane.margin>
             <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
          </BorderPane.margin>
-      </HBox>
-   </center>
-   <top>
-      <HBox prefHeight="70.0" BorderPane.alignment="CENTER">
+      </VBox>
+   </top>
+   <center>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="150.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="backBtn" fitHeight="25.0" fitWidth="25.0" onMouseClicked="#handleBackButtonClicked" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../icons/left-arrow-white.png" />
-               </image>
-               <HBox.margin>
-                  <Insets top="30.0" />
-               </HBox.margin>
-            </ImageView>
-            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/logo-vertical.png" />
-               </image>
-               <HBox.margin>
-                  <Insets top="10.0" />
-               </HBox.margin>
-            </ImageView>
-            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </Region>
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Band" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="25.0" />
+                     </padding></Label>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Register as a band manager to promote &#10;your music and search for new musicians.&#10;You can manage your musicians, accept&#10;or decline solo musicians who want to&#10;join your band and send invitations to them." />
+               </children></VBox>
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Solo" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="25.0" />
+                     </padding></Label>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Register as a solo to promote yourself,&#10;and search for a band to play with, &#10;or start your own. You can send requests&#10;to join bands and receive band offers" />
+               </children></VBox>
          </children>
          <BorderPane.margin>
-            <Insets bottom="25.0" left="50.0" right="70.0" top="25.0" />
+            <Insets bottom="50.0" left="50.0" right="50.0" />
          </BorderPane.margin>
       </HBox>
-   </top>
+   </center>
 </BorderPane>

@@ -13,31 +13,23 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@register.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.soundmate.controller.RegisterController">
    <top>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <ImageView fx:id="backBtn" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#handleBackClick" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/left-arrow-white.png" />
-                     </image>
-                  </ImageView>
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <ImageView fx:id="infoBtn" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#handleInfoClick" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/050-info.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/logo-vertical.png" />
-               </image>
-            </ImageView>
-         </children>
          <BorderPane.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0"/>
          </BorderPane.margin>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <ImageView fx:id="backBtn" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#handleBackClick"
+                       pickOnBounds="true" preserveRatio="true">
+               <Image url="@../icons/left-arrow-white.png"/>
+            </ImageView>
+            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS"/>
+            <ImageView fx:id="infoBtn" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#handleInfoClick"
+                       pickOnBounds="true" preserveRatio="true">
+               <Image url="@../icons/050-info.png"/>
+            </ImageView>
+         </HBox>
+         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/logo-vertical.png"/>
+         </ImageView>
       </VBox>
    </top>
    <center>
