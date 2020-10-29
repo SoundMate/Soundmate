@@ -1,0 +1,18 @@
+@font-face {
+	src: url('../fonts/Montserrat-Bold.ttf');
+}
+
+.background {
+    -fx-background-image: url("../images/bg.png");
+    -fx-background-size: cover;
+}
+
+.labels {
+	-fx-font-family: "Montserrat";
+	-fx-font-size: 12;
+}
+
+.text {
+	-fx-font-family: "Montserrat";
+	-fx-font-size: 9;
+}

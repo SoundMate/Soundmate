@@ -53,8 +53,15 @@ public class RegisterController {
     }
 
     @FXML
-    void handleInfoClick(MouseEvent event) {
-        //TODO: Implement about info page
+    void handleInfoClick(MouseEvent event) throws IOException {
+    	if (event.getSource() == infoBtn) {
+            Stage stage = (Stage) infoBtn.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/Info.fxml"));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+    	}
     }
-
+   
 }
