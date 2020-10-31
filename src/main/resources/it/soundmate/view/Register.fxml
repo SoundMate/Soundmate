@@ -14,50 +14,57 @@
    <top>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0"/>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
          </BorderPane.margin>
          <HBox prefHeight="100.0" prefWidth="200.0">
-            <ImageView fx:id="backBtn" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#handleBackClick"
-                       pickOnBounds="true" preserveRatio="true">
-               <Image url="@../icons/left-arrow-white.png"/>
+            <ImageView fx:id="backBtn" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#handleBackClick" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../icons/left-arrow-white.png" />
             </ImageView>
-            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS"/>
-            <ImageView fx:id="infoBtn" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#handleInfoClick"
-                       pickOnBounds="true" preserveRatio="true">
-               <Image url="@../icons/050-info.png"/>
+            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <ImageView fx:id="infoBtn" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#handleInfoClick" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../icons/050-info.png" />
             </ImageView>
          </HBox>
          <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../images/logo-vertical.png"/>
+            <Image url="@../images/logo-vertical.png" />
          </ImageView>
       </VBox>
    </top>
    <center>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="150.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="bandRegisterBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" stylesheets="@register.css" text="Band" textFill="WHITE">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="btn-band" />
                </styleClass>
-               <padding>
-                  <Insets bottom="75.0" left="100.0" right="100.0" top="75.0" />
-               </padding>
                <HBox.margin>
-                  <Insets left="50.0" />
+                  <Insets />
                </HBox.margin>
+               <padding>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+               </padding>
             </Button>
-            <Button fx:id="soloRegisterBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" stylesheets="@register.css" text="Solo" textFill="WHITE">
+            <Button fx:id="soloRegisterBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" stylesheets="@register.css" text="Band Room" textFill="WHITE">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-room" />
+               </styleClass>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="bandRegisterBtn1" alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleButtonAction" stylesheets="@register.css" text="Solo" textFill="WHITE">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="btn-solo" />
                </styleClass>
                <padding>
-                  <Insets bottom="75.0" left="100.0" right="100.0" top="75.0" />
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
                </padding>
-               <HBox.margin>
-                  <Insets right="50.0" />
-               </HBox.margin>
             </Button>
          </children>
       </HBox>

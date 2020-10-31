@@ -47,6 +47,9 @@ public class RegisterController {
             stage.setScene(scene);
             stage.show();
         }
+        else {
+            //TODO: Test Sonarcloud Code Smell
+        }
     }
 
     @FXML
