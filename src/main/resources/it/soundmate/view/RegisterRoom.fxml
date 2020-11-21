@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!--
+  ~ Copyright (c) 2020.
+  ~ This file was created by Soundmate organization Lorenzo Pantano & Matteo D'Alessandro
+  ~ Last Modified: 21/11/20, 15:35
+  -->
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@register_band.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.soundmate.controller.RegisterGraphicController">
+    <top>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fx:id="backBtn" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#handleBackButton" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../icons/left-arrow-white.png" />
+                    </image>
+                </ImageView>
+                <Region prefHeight="200.0" prefWidth="200.0" />
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/logo-h.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </HBox>
+                <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                <Label styleClass="band-registration" stylesheets="@register_band.css" text="Band Room Registration" textFill="WHITE">
+                    <font>
+                        <Font size="25.0" />
+                    </font>
+                </Label>
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="25.0" left="50.0" right="50.0" top="50.0" />
+            </BorderPane.margin>
+        </VBox>
+    </top>
+    <center>
+        <BorderPane styleClass="main-background" stylesheets="@register_band.css" BorderPane.alignment="CENTER">
+            <left>
+                <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                            <children>
+                                <ImageView fx:id="imgViewProfile" fitHeight="175.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+                                <Button fx:id="addProfilePicBtn" mnemonicParsing="false" onAction="#handleButtonAction" styleClass="add-image-btn" stylesheets="@register_band.css" text="Add profile picture" textFill="WHITE">
+                                    <font>
+                                        <Font size="10.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </StackPane>
+                        <TextField alignment="CENTER" promptText="Band Name..." styleClass="band-name-field" stylesheets="@register_band.css" />
+                    </children>
+                    <BorderPane.margin>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                    </BorderPane.margin>
+                </VBox>
+            </left>
+            <right>
+                <VBox BorderPane.alignment="CENTER">
+                    <children>
+                        <Label styleClass="manager-label" stylesheets="@register_band.css" text="Manager" textFill="WHITE">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="200.0" />
+                        <HBox>
+                            <children>
+                                <VBox>
+                                    <children>
+                                        <Label styleClass="field-labels" stylesheets="@register_band.css" text="First Name" textFill="WHITE" />
+                                        <TextField styleClass="fields" stylesheets="@register_band.css">
+                                            <VBox.margin>
+                                                <Insets right="20.0" />
+                                            </VBox.margin>
+                                        </TextField>
+                                    </children>
+                                </VBox>
+                                <VBox>
+                                    <children>
+                                        <Label styleClass="field-labels" stylesheets="@register_band.css" text="Last Name" textFill="WHITE" />
+                                        <TextField styleClass="fields" stylesheets="@register_band.css" />
+                                    </children>
+                                </VBox>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="20.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <VBox>
+                            <children>
+                                <HBox>
+                                    <children>
+                                        <VBox>
+                                            <children>
+                                                <Label styleClass="field-labels" stylesheets="@register_band.css" text="Email" textFill="WHITE" />
+                                                <TextField styleClass="fields" stylesheets="@register_band.css" />
+                                            </children>
+                                            <HBox.margin>
+                                                <Insets right="20.0" />
+                                            </HBox.margin>
+                                        </VBox>
+                                        <VBox>
+                                            <children>
+                                                <Label styleClass="field-labels" stylesheets="@register_band.css" text="Password" textFill="WHITE" />
+                                                <TextField styleClass="fields" stylesheets="@register_band.css" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="20.0" />
+                                    </VBox.margin>
+                                </HBox>
+                            </children>
+                        </VBox>
+                        <Region prefHeight="200.0" prefWidth="200.0" />
+                        <Region prefHeight="200.0" prefWidth="200.0" />
+                        <Button fx:id="continueBtn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="22.0" prefWidth="383.0" styleClass="continue-btn" stylesheets="@register_band.css" text="Continue" textFill="WHITE" />
+                    </children>
+                    <BorderPane.margin>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                    </BorderPane.margin>
+                </VBox>
+            </right>
+            <BorderPane.margin>
+                <Insets bottom="50.0" left="50.0" right="50.0" />
+            </BorderPane.margin>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </BorderPane>
+    </center>
+</BorderPane>

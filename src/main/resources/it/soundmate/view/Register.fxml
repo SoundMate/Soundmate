@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@register.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.soundmate.controller.RegisterController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@register.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.soundmate.controller.ChooseRegisterGraphicController">
    <top>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -45,7 +45,7 @@
                   <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
                </padding>
             </Button>
-            <Button fx:id="soloRegisterBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" stylesheets="@register.css" text="Band Room" textFill="WHITE">
+            <Button fx:id="roomRegisterBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" stylesheets="@register.css" text="Band Room" textFill="WHITE">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="btn-room" />
@@ -57,7 +57,7 @@
                   <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
                </padding>
             </Button>
-            <Button fx:id="bandRegisterBtn1" alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleButtonAction" stylesheets="@register.css" text="Solo" textFill="WHITE">
+            <Button fx:id="soloRegisterBtn" alignment="CENTER" contentDisplay="CENTER" layoutX="89.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleButtonAction" stylesheets="@register.css" text="Solo" textFill="WHITE">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="btn-solo" />

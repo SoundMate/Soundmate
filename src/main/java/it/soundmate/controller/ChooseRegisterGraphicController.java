@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RegisterController {
+public class ChooseRegisterGraphicController {
 
     @FXML
     private ImageView backBtn;
@@ -26,6 +26,9 @@ public class RegisterController {
 
     @FXML
     private Button soloRegisterBtn;
+
+    @FXML
+    private Button roomRegisterBtn;
 
     @FXML
     void handleBackClick(MouseEvent event) throws IOException {
@@ -47,8 +50,20 @@ public class RegisterController {
             stage.setScene(scene);
             stage.show();
         }
-        else {
-            //TODO: Test Sonarcloud Code Smell
+        else if (event.getSource() == soloRegisterBtn) {
+            Stage stage = (Stage) soloRegisterBtn.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/RegisterSolo.fxml"));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } else if (event.getSource() == roomRegisterBtn) {
+            Stage stage = (Stage) roomRegisterBtn.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/RegisterRoom.fxml"));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
     }
 
