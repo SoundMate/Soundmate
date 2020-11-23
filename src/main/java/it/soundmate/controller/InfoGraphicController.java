@@ -1,12 +1,7 @@
 package it.soundmate.controller;
 
-import java.io.IOException;
-
-import it.soundmate.App;
+import it.soundmate.utils.Navigator;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -17,13 +12,10 @@ public class InfoGraphicController {
     private ImageView backBtn;
 
     @FXML
-    void handleBackButtonClicked(MouseEvent event) throws IOException {
+    void handleBackButtonClicked(MouseEvent event) {
     	if (event.getSource() == backBtn) {
-    		Stage stage = (Stage) backBtn.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/Register.fxml"));
-            Parent root = fxmlLoader.load();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            Stage stage = Navigator.navigateToFXMLPage((Stage) backBtn.getScene().getWindow(), "view/Register.fxml");
+            assert stage != null;
             stage.show();
     	}
     }

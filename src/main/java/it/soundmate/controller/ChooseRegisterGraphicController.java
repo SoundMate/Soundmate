@@ -1,17 +1,12 @@
 package it.soundmate.controller;
 
-import it.soundmate.App;
+import it.soundmate.utils.Navigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class ChooseRegisterGraphicController {
 
@@ -31,52 +26,39 @@ public class ChooseRegisterGraphicController {
     private Button roomRegisterBtn;
 
     @FXML
-    void handleBackClick(MouseEvent event) throws IOException {
-        Stage stage = (Stage) backBtn.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/LandingLogin.fxml"));
-        Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    void handleBackClick(MouseEvent event) {
+        if (event.getSource() == backBtn) {
+            Stage stage = Navigator.navigateToFXMLPage((Stage) backBtn.getScene().getWindow(), "view/LandingLogin.fxml");
+            assert stage != null;
+            stage.show();
+        }
     }
 
     @FXML
-    void handleButtonAction(ActionEvent event) throws IOException {
+    void handleButtonAction(ActionEvent event) {
         if (event.getSource() == bandRegisterBtn) {
-            Stage stage = (Stage) bandRegisterBtn.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/RegisterBand.fxml"));
-            Parent root = fxmlLoader.load();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            Stage stage = Navigator.navigateToFXMLPage((Stage) bandRegisterBtn.getScene().getWindow(), "view/RegisterBand.fxml");
+            assert stage != null;
             stage.show();
         }
         else if (event.getSource() == soloRegisterBtn) {
-            Stage stage = (Stage) soloRegisterBtn.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/RegisterSolo.fxml"));
-            Parent root = fxmlLoader.load();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            Stage stage = Navigator.navigateToFXMLPage((Stage) soloRegisterBtn.getScene().getWindow(), "view/RegisterSolo.fxml");
+            assert stage != null;
             stage.show();
         } else if (event.getSource() == roomRegisterBtn) {
-            Stage stage = (Stage) roomRegisterBtn.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/RegisterRoom.fxml"));
-            Parent root = fxmlLoader.load();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            Stage stage = Navigator.navigateToFXMLPage((Stage) roomRegisterBtn.getScene().getWindow(), "view/RegisterRoom.fxml");
+            assert stage != null;
             stage.show();
         }
     }
 
     @FXML
-    void handleInfoClick(MouseEvent event) throws IOException {
-    	if (event.getSource() == infoBtn) {
-            Stage stage = (Stage) infoBtn.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/Info.fxml"));
-            Parent root = fxmlLoader.load();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+    void handleInfoClick(MouseEvent event) {
+        if (event.getSource() == infoBtn) {
+            Stage stage = Navigator.navigateToFXMLPage((Stage) infoBtn.getScene().getWindow(), "view/Info.fxml");
+            assert stage != null;
             stage.show();
-    	}
+        }
     }
    
 }
