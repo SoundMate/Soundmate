@@ -101,6 +101,10 @@ header {
     padding: 5em 0;
 }
 
+.feature-last {
+    padding-bottom: 10em;
+}
+
 .text-wrapper-1 {
     color: white;
     padding: 0 7em;
@@ -195,26 +199,27 @@ input:focus {
 
 .register-box {
     text-align: center;
-    margin-left: 11em;
+    margin-left: auto;
+    justify-items: auto;
 }
 
 .band-solo-boxes {
     display: flex;
-    margin: 0;
-    padding: 0 5em;
+    margin: auto 0;
+    padding: 0 4em;
     list-style: none;
 }
 
 .register-img-band {
-    width: 300px;
-    height: 188px;
+    width: 250px;
+    height: 138px;
     border-radius: 15px;
     margin: 2em 2em;
 }
 
 .register-img-solo {
-    width: 300px;
-    height: 188px;
+    width: 250px;
+    height: 138px;
     border-radius: 15px;
     margin: 2em 2em;
 }
@@ -239,4 +244,23 @@ input:focus {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 22px;
+}
+
+.footer {
+    height: 30vh;
+    background-color: #0d0d0d;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.contacts-list {
+    color: #202020;
+    font-weight: bold;
+    list-style: none;
+    display: flex;
+}
+
+.contact-item {
+    padding: 0 5em;
 }
