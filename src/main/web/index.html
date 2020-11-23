@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="smoothScrolling.js"></script>
     <title>Soundmate</title>
 </head>
 
@@ -16,9 +17,9 @@
             <a href="#" class="logo-link"><img src="../resources/it/soundmate/images/logo.svg" alt="Soundmate Logo" class="header-logo"></a>
             <ul class="links">
                 <li><a href="#" class="nav-link">Home</a></li>
-                <li><a href="#" class="nav-link">Features</a></li>
-                <li><a href="#" class="nav-link">Contacts</a></li>
-                <li><button class="nav-link sign-up-btn">Sign Up</button></li>
+                <li><a href="#" class="nav-link" onclick="smoothScroll(document.getElementById('#feature-wrapper'))">Features</a></li>
+                <li><a href="#" class="nav-link" onclick="smoothScroll(document.getElementById('#footer'))">Contacts</a></li>
+                <li><button class="nav-link sign-up-btn" onclick="smoothScroll(document.getElementById('#footer'))">Sign Up</button></li>
             </ul>
         </header>
 
@@ -28,11 +29,11 @@
                 <h3>Join our community</h3>
                 <h3>Music begins with you</h3>
             </div>
-            <button class="join-now-btn">Join Now</button>
+            <button class="join-now-btn" onclick="smoothScroll(document.getElementById('#footer'))">Join Now</button>
         </div>
     </div>
 
-    <div class="feature-wrapper">
+    <div class="feature-wrapper" id="#feature-wrapper">
 
         <div class="feature">
             <img src="../resources/it/soundmate/images/band.jpg" alt="Band" class="feature-img">
@@ -110,7 +111,7 @@
 
     </div>
 
-    <div class="footer">
+    <div class="footer" id="#footer">
 
         <ul class="contacts-list">
             <li class="contact-item"><a>Lorenzo Pantano</a></li>
