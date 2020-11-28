@@ -1,4 +1,4 @@
-package it.soundmate.controller;
+package it.soundmate.graphiccontrollers;
 
 import it.soundmate.utils.Navigator;
 import javafx.event.ActionEvent;

@@ -4,7 +4,7 @@
  * Last Modified: 21/11/20, 16:06
  */
 
-package it.soundmate.controller;
+package it.soundmate.graphiccontrollers;
 
 /*
 * RegisterGraphicController
