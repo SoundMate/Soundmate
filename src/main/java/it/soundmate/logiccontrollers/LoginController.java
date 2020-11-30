@@ -7,12 +7,14 @@
 package it.soundmate.logiccontrollers;
 
 import it.soundmate.beans.UserBean;
+import it.soundmate.database.UserDao;
 
 public class LoginController {
 
     /* Singleton */
 
     private static LoginController instance = null;
+    private static final UserDao userDao = new UserDao();
 
     public static LoginController getInstance() {
         if (instance == null) {
@@ -32,12 +34,10 @@ public class LoginController {
 
     public UserBean login(String email, String password) {
         /*Verifica qui email e password*/
-        UserBean userBean = new UserBean();
-        userBean.setFirstName("Lorenzo");
-        userBean.setLastName("Pantano");
-        if (Math.random() > 0.5) {
-            return userBean;
-        } else return null;
+        UserBean user = null;
+        user = userDao.getByEmailAndPassword(email, password);
+        if (user != null) return user;
+        else return null;
     }
 
 }

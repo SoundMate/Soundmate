@@ -62,7 +62,7 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </Label>
-            <TextField prefWidth="260.0" styleClass="form-field" stylesheets="@landing_login.css">
+            <TextField fx:id="emailTextField" prefWidth="260.0" styleClass="form-field" stylesheets="@landing_login.css">
                <VBox.margin>
                   <Insets bottom="10.0" top="5.0" />
                </VBox.margin>
@@ -71,7 +71,7 @@
                </padding>
             </TextField>
             <Label styleClass="form-labels" stylesheets="@landing_login.css" text="Password" textFill="WHITE" wrapText="true" />
-            <PasswordField prefWidth="260.0" styleClass="form-field" stylesheets="@landing_login.css">
+            <PasswordField fx:id="pswTextField" prefWidth="260.0" styleClass="form-field" stylesheets="@landing_login.css">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>

@@ -1,7 +1,7 @@
 <%--
   ~ Copyright (c) 2020.
   ~ This file was created by Soundmate organization Lorenzo Pantano & Matteo D'Alessandro
-  ~ Last Modified: 28/11/20, 12:56
+  ~ Last Modified: 28/11/20, 13:33
   --%>
 
 <%--
@@ -12,7 +12,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="userBean" scope="session" class="it.soundmate.beans.UserBean"/>
 
 <html>
 <head>
