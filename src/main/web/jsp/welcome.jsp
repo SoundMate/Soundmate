@@ -16,10 +16,27 @@
 <html>
 <head>
     <title>Welcome to Soundmate</title>
+    <link rel="stylesheet" href="../css/welcome.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <h1>Welcome <%out.print(session.getAttribute("firstName"));%> <%out.print(session.getAttribute("lastName"));%></h1>
+    <div class="sidenav">
+        <div class="user-data">
+            <a href="#"><img src="../../resources/it/soundmate/images/user-default.png" alt="logo" class="user-image"></a>
+            <a href="#"><%out.print(session.getAttribute("firstName"));%> <%out.print(session.getAttribute("lastName"));%></a>
+        </div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Search</a>
+            <a href="#">Messages</a>
+            <a href="#">Profile</a>
+            <a href="#">Settings</a>
+        </div>
+        <div class="logout-row">
+            <a href="#">Logout</a>
+        </div>
+    </div>
 
 </body>
 </html>
