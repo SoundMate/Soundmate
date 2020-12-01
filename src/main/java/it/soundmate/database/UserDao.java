@@ -30,6 +30,7 @@ public class UserDao implements Dao<User>{
             while (result.next()) {
                 user.setFirstName(result.getString("firstName"));
                 user.setLastName(result.getString("lastName"));
+                user.setUserID(result.getInt("id"));
             }
             return user;
         } catch (SQLException e){

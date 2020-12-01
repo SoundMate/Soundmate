@@ -19,7 +19,7 @@
 </head>
 <body>
 
-    <h1>Welcome <jsp:getProperty name="userBean" property="firstName"/> <jsp:getProperty name="userBean" property="lastName"/></h1>
+    <h1>Welcome <%out.print(session.getAttribute("firstName"));%> <%out.print(session.getAttribute("lastName"));%></h1>
 
 </body>
 </html>

@@ -27,17 +27,14 @@ public class LoginController {
     * Login Method
     *
     * Esegui accesso a DB, con email e password, e setta gli
-    * attributi del bean da passare alla view. Per adesso esegue un login
-    * finto con 50% di possibilità.
+    * attributi del bean da passare alla view.
     *
     * */
 
     public UserBean login(String email, String password) {
-        /*Verifica qui email e password*/
-        UserBean user = null;
+        UserBean user;
         user = userDao.getByEmailAndPassword(email, password);
-        if (user != null) return user;
-        else return null;
+        return user;
     }
 
 }

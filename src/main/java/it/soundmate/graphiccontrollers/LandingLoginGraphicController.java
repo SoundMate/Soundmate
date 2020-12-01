@@ -1,5 +1,6 @@
 package it.soundmate.graphiccontrollers;
 
+import it.soundmate.beans.LoginBean;
 import it.soundmate.beans.UserBean;
 import it.soundmate.logiccontrollers.LoginController;
 import it.soundmate.utils.Navigator;
@@ -34,14 +35,8 @@ public class LandingLoginGraphicController {
             assert stage != null;
             stage.show();
         } else if (event.getSource() == loginBtn) {
-
-            if (emailTextField.getText().isEmpty() || pswTextField.getText().isEmpty()) {
-                //TODO: Handle Insert Valid Data
-                return;
-            }
-
-            this.loginController = LoginController.getInstance();
-            UserBean userBean = loginController.login(emailTextField.getText(), pswTextField.getText());
+            LoginBean loginBean = new LoginBean();
+            UserBean userBean = loginBean.validate(emailTextField.getText(), pswTextField.getText());
             if (userBean == null){
                 System.out.println("ERROR IN LOGIN");
                 //TODO: Handle Login Error

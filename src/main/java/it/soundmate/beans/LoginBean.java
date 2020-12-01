@@ -29,12 +29,12 @@ public class LoginBean {
     }
 
     /* Nel Bean si può fare un controllo sintattico sui dati inseriti */
-    public boolean validate(String email, String password) {
+    public UserBean validate(String email, String password) {
         if (email.isEmpty() || password.isEmpty()) {
-            return false;
+            return null;
         } else {
             UserBean userBean = LoginController.getInstance().login(email, password);
-            return userBean != null;
+            return userBean;
         }
     }
 }

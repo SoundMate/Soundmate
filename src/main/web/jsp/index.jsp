@@ -1,4 +1,4 @@
-<%--
+<%@ page import="it.soundmate.beans.UserBean" %><%--
   ~ Copyright (c) 2020.
   ~ This file was created by Soundmate organization Lorenzo Pantano & Matteo D'Alessandro
   ~ Last Modified: 28/11/20, 13:31
@@ -28,9 +28,15 @@
 <%
         } else {
 
-            if (loginBean.validate(loginBean.getEmail(), loginBean.getPassword())) {
+            userBean = loginBean.validate(loginBean.getEmail(), loginBean.getPassword());
+            if (userBean != null) {
+
+                session.setAttribute("userID", userBean.getUserID());
+                session.setAttribute("firstName", userBean.getFirstName());
+                session.setAttribute("lastName", userBean.getLastName());
 %>
-            <jsp:forward  page="welcome.jsp"/>  <!--Se il validate ritorna true allora naviga all'altra pagina-->
+                <jsp:forward  page="welcome.jsp"/>  <!--Se il validate ritorna true allora naviga all'altra pagina-->
+
 <%
             } else {
 %>
