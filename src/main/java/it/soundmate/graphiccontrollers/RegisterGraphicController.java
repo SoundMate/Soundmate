@@ -127,6 +127,7 @@ public class RegisterGraphicController {
         int type = this.assignType();
         if (emailTextField.getText().isEmpty() || passwordTextField.getText().isEmpty() || firstNameTextField.getText().isEmpty() || lastNameTextField.getText().isEmpty()) {
             logger.info("Some fields are blank");
+            //TODO: Handle blank fields
         } else {
             UserBean newUser;
             if (type == 1) {
