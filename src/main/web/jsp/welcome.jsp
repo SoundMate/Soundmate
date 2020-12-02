@@ -24,7 +24,17 @@
     <div class="sidenav">
         <div class="user-data">
             <a href="#"><img src="../../resources/it/soundmate/images/user-default.png" alt="logo" class="user-image"></a>
+<%
+        if (session.getAttribute("userID") == null) {
+%>
+            <jsp:forward page="index.jsp"/>
+<%
+        } else {
+%>
             <a href="#"><%out.print(session.getAttribute("firstName"));%> <%out.print(session.getAttribute("lastName"));%></a>
+<%
+        }
+%>
         </div>
         <div class="nav-links">
             <a href="#">Home</a>
@@ -36,6 +46,10 @@
         <div class="logout-row">
             <a href="#">Logout</a>
         </div>
+    </div>
+
+    <div class="main">
+
     </div>
 
 </body>

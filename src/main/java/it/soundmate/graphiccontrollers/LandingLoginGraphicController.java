@@ -2,7 +2,6 @@ package it.soundmate.graphiccontrollers;
 
 import it.soundmate.beans.LoginBean;
 import it.soundmate.beans.UserBean;
-import it.soundmate.logiccontrollers.LoginController;
 import it.soundmate.utils.Navigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,8 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class LandingLoginGraphicController {
+
+    private final Logger logger = LoggerFactory.getLogger(LandingLoginGraphicController.class);
 
     @FXML
     private Button joinNowBtn;
@@ -25,8 +28,6 @@ public class LandingLoginGraphicController {
     @FXML
     private PasswordField pswTextField;
 
-    private LoginController loginController;
-
     @FXML
     private void handleButtonAction (ActionEvent event) {
 
@@ -35,13 +36,13 @@ public class LandingLoginGraphicController {
             assert stage != null;
             stage.show();
         } else if (event.getSource() == loginBtn) {
-            LoginBean loginBean = new LoginBean();
+            LoginBean loginBean = new LoginBean();   //Nel Login Bean avviene un controllo di sintassi sui campi
             UserBean userBean = loginBean.validate(emailTextField.getText(), pswTextField.getText());
             if (userBean == null){
-                System.out.println("ERROR IN LOGIN");
+                logger.error("Error in Login"); //To be handled with Exceptions
                 //TODO: Handle Login Error
             } else {
-                System.out.println("Login successful: " + userBean.getFirstName() + " " + userBean.getLastName());
+                logger.info("Login Successful: {} {}",userBean.getFirstName(),userBean.getLastName());
                 //TODO: Handle successful Login
             }
         }

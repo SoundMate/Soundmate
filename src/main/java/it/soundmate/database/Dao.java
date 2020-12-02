@@ -5,7 +5,6 @@
  */
 
 package it.soundmate.database;
-import java.util.Optional;
 
 public interface Dao<T> {
     T getByID(long id);

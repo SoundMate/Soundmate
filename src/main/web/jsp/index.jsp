@@ -1,4 +1,4 @@
-<%@ page import="it.soundmate.beans.UserBean" %><%--
+<%--
   ~ Copyright (c) 2020.
   ~ This file was created by Soundmate organization Lorenzo Pantano & Matteo D'Alessandro
   ~ Last Modified: 28/11/20, 13:31
@@ -121,21 +121,21 @@
                         <li>
                             <div class="container-band">
                                 <img src="../../resources/it/soundmate/images/band-register.png" alt="Band Register" class="register-img-band">
-                                <div class="centered">Band</div>
+                                <div class="centered"><a href="register.jsp">Band</a></div>
                             </div>
                         </li>
 
                         <li>
                             <div class="container-band">
                                 <img src="../../resources/it/soundmate/images/band-room-register-2.png" alt="Band Room Register" class="register-img-band">
-                                <div class="centered">Band Room</div>
+                                <div class="centered"><a href="register.jsp">Band Room</a>/div>
                             </div>
                         </li>
 
                         <li>
                             <div class="container-solo">
                                 <img src="../../resources/it/soundmate/images/solo-register.png" alt="Solo Register" class="register-img-solo">
-                                <div class="centered"><a>Solo</a></div>
+                                <div class="centered"><a href="register.jsp">Solo</a></div>
                             </div>
                         </li>
                     </ul>

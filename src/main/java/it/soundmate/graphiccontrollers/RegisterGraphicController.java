@@ -15,22 +15,26 @@ package it.soundmate.graphiccontrollers;
 * single controller.
 * */
 
+import it.soundmate.beans.UserBean;
+import it.soundmate.logiccontrollers.RegisterController;
 import it.soundmate.utils.ImagePicker;
 import it.soundmate.utils.Navigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class RegisterGraphicController {
 
-    private final Logger logger = Logger.getLogger(RegisterGraphicController.class.getName());
+    private final Logger logger = LoggerFactory.getLogger(RegisterGraphicController.class);
+    private final RegisterController registerController= new RegisterController();
 
     @FXML
     private ImageView imgViewProfile;
@@ -40,6 +44,24 @@ public class RegisterGraphicController {
 
     @FXML
     private ImageView backBtn;
+
+    @FXML
+    private TextField firstNameTextField;
+
+    @FXML
+    private TextField lastNameTextField;
+
+    @FXML
+    private TextField emailTextField;
+
+    @FXML
+    private TextField passwordTextField;
+
+    @FXML
+    private TextField bandOrRoomNameTextField;
+
+    @FXML
+    private Label registerLabel;
 
     @FXML
     private Button continueBtn;
@@ -61,7 +83,7 @@ public class RegisterGraphicController {
             if (imgResult == 0) {
                 addProfilePicBtn.setText("Change image");
             } else {
-                logger.log(Level.WARNING, "Error uploading image");
+                logger.debug("Error uploading image");
             }
         }
 
@@ -73,6 +95,10 @@ public class RegisterGraphicController {
         * If there's not then launch the second registration page.
         * */
 
+        if (event.getSource() == continueBtn) {
+            this.registerUser();
+        }
+
     }
 
     @FXML
@@ -83,4 +109,33 @@ public class RegisterGraphicController {
             stage.show();
         }
     }
+
+    private int assignType() {
+        switch (registerLabel.getText()) {
+            case "Band Registration":
+                return 2;
+            case "Band Room Registration":
+                return 3;
+            case "Solo Registration":
+                return 1;
+            default:
+                return 0;
+        }
+    }
+
+    private void registerUser() {
+        int type = this.assignType();
+        if (emailTextField.getText().isEmpty() || passwordTextField.getText().isEmpty() || firstNameTextField.getText().isEmpty() || lastNameTextField.getText().isEmpty()) {
+            logger.info("Some fields are blank");
+        } else {
+            UserBean newUser;
+            if (type == 1) {
+                newUser = registerController.registerUser(emailTextField.getText(), passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), type, null);
+            } else {
+                newUser = registerController.registerUser(emailTextField.getText(), passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), type, bandOrRoomNameTextField.getText());
+            }
+            logger.info("User Logged: {}", newUser.getEmail());
+        }
+    }
+
 }

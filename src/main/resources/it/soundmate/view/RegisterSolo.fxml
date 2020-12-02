@@ -39,7 +39,7 @@
                     </children>
                 </HBox>
                 <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
-                <Label styleClass="band-registration" stylesheets="@register_band.css" text="Solo Registration" textFill="WHITE">
+                <Label fx:id="registerLabel" styleClass="band-registration" stylesheets="@register_band.css" text="Solo Registration" textFill="WHITE">
                     <font>
                         <Font size="25.0" />
                     </font>
@@ -65,7 +65,6 @@
                                 </Button>
                             </children>
                         </StackPane>
-                        <TextField alignment="CENTER" promptText="Band Name..." styleClass="band-name-field" stylesheets="@register_band.css" />
                     </children>
                     <BorderPane.margin>
                         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
@@ -86,7 +85,7 @@
                                 <VBox>
                                     <children>
                                         <Label styleClass="field-labels" stylesheets="@register_band.css" text="First Name" textFill="WHITE" />
-                                        <TextField styleClass="fields" stylesheets="@register_band.css">
+                                        <TextField fx:id="firstNameTextField" styleClass="fields" stylesheets="@register_band.css">
                                             <VBox.margin>
                                                 <Insets right="20.0" />
                                             </VBox.margin>
@@ -96,7 +95,7 @@
                                 <VBox>
                                     <children>
                                         <Label styleClass="field-labels" stylesheets="@register_band.css" text="Last Name" textFill="WHITE" />
-                                        <TextField styleClass="fields" stylesheets="@register_band.css" />
+                                        <TextField fx:id="lastNameTextField" styleClass="fields" stylesheets="@register_band.css" />
                                     </children>
                                 </VBox>
                             </children>
@@ -111,7 +110,7 @@
                                         <VBox>
                                             <children>
                                                 <Label styleClass="field-labels" stylesheets="@register_band.css" text="Email" textFill="WHITE" />
-                                                <TextField styleClass="fields" stylesheets="@register_band.css" />
+                                                <TextField fx:id="emailTextField" styleClass="fields" stylesheets="@register_band.css" />
                                             </children>
                                             <HBox.margin>
                                                 <Insets right="20.0" />
@@ -120,7 +119,7 @@
                                         <VBox>
                                             <children>
                                                 <Label styleClass="field-labels" stylesheets="@register_band.css" text="Password" textFill="WHITE" />
-                                                <TextField styleClass="fields" stylesheets="@register_band.css" />
+                                                <TextField fx:id="passwordTextField" styleClass="fields" stylesheets="@register_band.css" />
                                             </children>
                                         </VBox>
                                     </children>

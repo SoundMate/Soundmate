@@ -33,8 +33,7 @@ public class LoginBean {
         if (email.isEmpty() || password.isEmpty()) {
             return null;
         } else {
-            UserBean userBean = LoginController.getInstance().login(email, password);
-            return userBean;
+            return LoginController.getInstance().login(email, password);
         }
     }
 }
