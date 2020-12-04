@@ -18,6 +18,7 @@
 <jsp:useBean id="userBean" scope="session" class="it.soundmate.beans.UserBean"/>
 <jsp:setProperty name="loginBean" property="*"/>
 
+<!-- Login Request -->
 <%
     if (request.getParameter("login")!=null) {
         if (loginBean.getEmail() == null || loginBean.getPassword() == null) {
@@ -46,6 +47,7 @@
         }
     }
 %>
+
 
 <body>
 
@@ -115,33 +117,35 @@
                     <input type="submit" name="login" value="Sign In" class="sign-in-form-button">
                 </form>
 
-                <div class="register-box">
-                    <h3>Sign Up Now</h3>
-                    <ul class="band-solo-boxes">
-                        <li>
-                            <div class="container-band">
-                                <img src="../../resources/it/soundmate/images/band-register.png" alt="Band Register" class="register-img-band">
-                                <div class="centered"><a href="register.jsp">Band</a></div>
-                            </div>
-                        </li>
+                <form action="register.jsp" method="get" name="register-selection">
+                    <div class="register-box">
+                        <h3>Sign Up Now</h3>
+                        <ul class="band-solo-boxes">
+                            <li>
+                                <div class="container-band">
+                                    <img src="../../resources/it/soundmate/images/band-register.png" alt="Band Register" class="register-img-band">
+                                    <div class="centered"><input type="submit" value="Band" name="register"></div>
+                                </div>
+                            </li>
 
-                        <li>
-                            <div class="container-band">
-                                <img src="../../resources/it/soundmate/images/band-room-register-2.png" alt="Band Room Register" class="register-img-band">
-                                <div class="centered"><a href="register.jsp">Band Room</a>/div>
-                            </div>
-                        </li>
+                            <li>
+                                <div class="container-band">
+                                    <img src="../../resources/it/soundmate/images/band-room-register-2.png" alt="Band Room Register" class="register-img-band">
+                                    <div class="centered"><input type="submit" value="Band Room" name="register"></div>
+                                </div>
+                            </li>
 
-                        <li>
-                            <div class="container-solo">
-                                <img src="../../resources/it/soundmate/images/solo-register.png" alt="Solo Register" class="register-img-solo">
-                                <div class="centered"><a href="register.jsp">Solo</a></div>
-                            </div>
-                        </li>
-                    </ul>
+                            <li>
+                                <div class="container-solo">
+                                    <img src="../../resources/it/soundmate/images/solo-register.png" alt="Solo Register" class="register-img-solo">
+                                    <div class="centered"><input type="submit" value="Solo" name="register"></div>
+                                </div>
+                            </li>
+                        </ul>
 
 
-                </div>
+                    </div>
+                </form>
 
             </div>
 

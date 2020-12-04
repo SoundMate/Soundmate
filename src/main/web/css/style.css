@@ -250,6 +250,7 @@ input:focus {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 22px;
+    color: white;
 }
 
 .footer {
@@ -282,4 +283,8 @@ input:focus {
 .error-message {
     color: white;
     font-weight: bold;
+}
+
+.centered input {
+    background-color: transparent;
 }
