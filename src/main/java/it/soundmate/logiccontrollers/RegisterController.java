@@ -30,6 +30,7 @@ public class RegisterController {
                     if (userDao.registerBand(bandOrRoomName) && userDao.registerBandManager(loginUser.getUserID(), bandOrRoomName)){
                         return loginUser;
                     } else return null;
+
                 default:
                     return null;
 

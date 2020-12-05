@@ -47,7 +47,7 @@
 <%
                         break;
                     } else {
-                        userBean = registerBean.registerUser(registerBean.getEmail(), registerBean.getPassword(), registerBean.getFirstName(), registerBean.getLastName(), registerBean.getBandRoomName(), 2);
+                        userBean = registerBean.registerUser(registerBean.getEmail(), registerBean.getPassword(), registerBean.getFirstName(), registerBean.getLastName(), registerBean.getBandName(), 2);
                         if (userBean!=null) {
                             session.setAttribute("userID", userBean.getUserID());
                             session.setAttribute("firstName", userBean.getFirstName());
@@ -101,7 +101,7 @@
 <%
                         break;
                     } else {
-                        userBean = registerBean.registerUser(registerBean.getEmail(), registerBean.getPassword(), registerBean.getFirstName(), registerBean.getLastName(), registerBean.getBandRoomName(), 1);
+                        userBean = registerBean.registerUser(registerBean.getEmail(), registerBean.getPassword(), registerBean.getFirstName(), registerBean.getLastName(), registerBean.getBandRoomName(), 3);
                         if (userBean!=null) {
                             session.setAttribute("userID", userBean.getUserID());
                             session.setAttribute("firstName", userBean.getFirstName());
