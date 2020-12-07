@@ -108,4 +108,17 @@ public class UserDao implements Dao<User> {
         }
     }
 
+    public boolean registerBandRoomManager(int id, String name) {
+        String query = "insert into \"BandRoomManager\" (\"userid\", bandroomname) values (?,?)";
+        try (PreparedStatement preparedStatement = Connector.getInstance().getConnection().prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.setString(2, name);
+            //executeUpdate returns the numbers of affected row
+            return preparedStatement.executeUpdate() == 1;
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+            return false;
+        }
+    }
+
 }

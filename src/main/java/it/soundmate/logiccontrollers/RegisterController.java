@@ -23,14 +23,20 @@ public class RegisterController {
             UserBean loginUser = userDao.getByEmailAndPassword(email, password);
             switch (type) {
                 case 1:
+                    //Register solo data
                     if (userDao.registerSoloFromUsers(loginUser.getUserID())){
                         return loginUser;
                     } else return null;
                 case 2:
+                    //Register band data and band manager data
                     if (userDao.registerBand(bandOrRoomName) && userDao.registerBandManager(loginUser.getUserID(), bandOrRoomName)){
                         return loginUser;
                     } else return null;
-
+                case 3:
+                    //Register Band Room Manager
+                    if (userDao.registerBandRoomManager(loginUser.getUserID(), bandOrRoomName)) {
+                        return loginUser;
+                    } else return null;
                 default:
                     return null;
 

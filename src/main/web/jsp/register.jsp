@@ -30,7 +30,7 @@
 <!-- Register Request -->
 <%
     if (request.getParameter("continue")!=null) {
-        if (registerBean.emptyCommonFields()) {
+        if (registerBean.checkFields()) {
 %>
             <div style="align-content: center; color: red; justify-content: center; align-items: center;">
                 <p style="font-weight: bold; color: white; background: red; margin: 0 auto; padding: 1em; text-align: center">Please insert valid data</p>
@@ -38,88 +38,63 @@
 <%
         } else {
             switch (request.getParameter("register")) {
-                case "Band":
-                    if (registerBean.getBandName() == null) {
-%>
-                        <div style="align-content: center; color: red; justify-content: center; align-items: center;">
-                            <p style="font-weight: bold; color: white; background: red; margin: 0 auto; padding: 1em; text-align: center">Please insert a Band Name</p>
-                        </div>
-<%
-                        break;
-                    } else {
-                        userBean = registerBean.registerUser(registerBean.getEmail(), registerBean.getPassword(), registerBean.getFirstName(), registerBean.getLastName(), registerBean.getBandName(), 2);
-                        if (userBean!=null) {
-                            session.setAttribute("userID", userBean.getUserID());
-                            session.setAttribute("firstName", userBean.getFirstName());
-                            session.setAttribute("lastName", userBean.getLastName());
-%>
-                            <jsp:forward page="welcome.jsp"/>
-<%
-                            break;
-                        } else {
-%>
-                                <div style="align-content: center; color: red; justify-content: center; align-items: center;">
-                                    <p style="font-weight: bold; color: white; background: red; margin: 0 auto; padding: 1em; text-align: center">Something went wrong, try again later</p>
-                                </div>
-<%
-                                break;
-                        }
-                    }
-                case "Solo":
-                    if (registerBean.emptySoloFields()) {
-%>
-                        <div style="align-content: center; color: red; justify-content: center; align-items: center;">
-                            <p style="font-weight: bold; color: white; background: red; margin: 0 auto; padding: 1em; text-align: center">Please insert valid data for Solo</p>
-                        </div>
-<%
-                        break;
-                    } else {
-                        userBean = registerBean.registerUser(registerBean.getEmail(), registerBean.getPassword(), registerBean.getFirstName(), registerBean.getLastName(), registerBean.getBandRoomName(), 1);
 
-                        if (userBean!=null) {
-                            session.setAttribute("userID", userBean.getUserID());
-                            session.setAttribute("firstName", userBean.getFirstName());
-                            session.setAttribute("lastName", userBean.getLastName());
-%>
-                            <jsp:forward page="welcome.jsp"/>
-<%
-                        } else {
-%>
-                                <div style="align-content: center; color: red; justify-content: center; align-items: center;">
-                                    <p style="font-weight: bold; color: white; background: red; margin: 0 auto; padding: 1em; text-align: center">Something went wrong, try again later</p>
-                                </div>
-<%
-                        }
-                    }
-                    break;
                 case "Band Room":
-                    if (registerBean.emptyBandRoomFields()) {
+                    if (registerBean.checkName()) {
 %>
                         <div style="align-content: center; color: red; justify-content: center; align-items: center;">
-                            <p style="font-weight: bold; color: white; background: red; margin: 0 auto; padding: 1em; text-align: center">Please insert valid data the Band Room</p>
+                            <p style="font-weight: bold; color: white; background: red; margin: 0 auto; padding: 1em; text-align: center">Please insert a valid Name</p>
                         </div>
 <%
-                        break;
                     } else {
-                        userBean = registerBean.registerUser(registerBean.getEmail(), registerBean.getPassword(), registerBean.getFirstName(), registerBean.getLastName(), registerBean.getBandRoomName(), 3);
-                        if (userBean!=null) {
-                            session.setAttribute("userID", userBean.getUserID());
-                            session.setAttribute("firstName", userBean.getFirstName());
-                            session.setAttribute("lastName", userBean.getLastName());
-%>
-                            <jsp:forward page="welcome.jsp"/>
-<%
+                        userBean = registerBean.registerUser(3);
+                        if (userBean != null) {
+                            //Forward to page with user parameters
                         } else {
+                            //Display error message
 %>
                             <div style="align-content: center; color: red; justify-content: center; align-items: center;">
-                                <p style="font-weight: bold; color: white; background: red; margin: 0 auto; padding: 1em; text-align: center">Something went wrong, try again later</p>
+                                <p style="font-weight: bold; color: white; background: red; margin: 0 auto; padding: 1em; text-align: center">Something went wrong during registration process</p>
                             </div>
 <%
                         }
                     }
                     break;
-                default:
+
+                case "Band":
+                    if (registerBean.checkName()) {
+%>
+                            <div style="align-content: center; color: red; justify-content: center; align-items: center;">
+                                <p style="font-weight: bold; color: white; background: red; margin: 0 auto; padding: 1em; text-align: center">Please insert a valid Name</p>
+                            </div>
+<%
+                    } else {
+                        userBean = registerBean.registerUser(2);
+                        if (userBean != null) {
+                            //Forward to page with user parameters
+                        } else {
+                            //Display error message
+%>
+                            <div style="align-content: center; color: red; justify-content: center; align-items: center;">
+                                <p style="font-weight: bold; color: white; background: red; margin: 0 auto; padding: 1em; text-align: center">Something went wrong during registration process</p>
+                            </div>
+<%
+                        }
+                    }
                     break;
+                case "Solo":
+                    userBean = registerBean.registerUser(1);
+                    if (userBean != null) {
+                        //Forward
+                    } else {
+%>
+                        <div style="align-content: center; color: red; justify-content: center; align-items: center;">
+                            <p style="font-weight: bold; color: white; background: red; margin: 0 auto; padding: 1em; text-align: center">Something went wrong during registration process</p>
+                        </div>
+<%
+                    }
+                    break;
+
             }
         }
     }
@@ -160,47 +135,21 @@
                 case "Band":
         %>
         <div class="specific-form">
-            <input type="text" name="bandName" id="band-name" value="" class="band-name-form"
+            <input type="text" name="name" id="band-name" value="" class="band-name-form"
                    placeholder="Band Name...">
         </div>
         <%
                 break;
             case "Band Room":
         %>
-        <div class="specific-form-band-room">
-            <div class="field">
-                <label for="band-room-name">Band Room Name</label>
-                <input type="text" name="bandRoomName" id="band-room-name" class="text-field-style">
-            </div>
-            <div class="field">
-                <label for="city">City</label>
-                <input type="text" name="city" id="city" class="text-field-style">
-            </div>
-            <div class="field">
-                <label for="address">Address</label>
-                <input type="text" name="address" id="address" class="text-field-style">
-            </div>
+        <div class="specific-form">
+            <input type="text" name="name" id="band-room-name" value="" class="band-name-form"
+                   placeholder="Band Room Name...">
         </div>
         <%
                 break;
             case "Solo":
-        %>
-        <div class="specific-form-band-room">
-            <div class="field">
-                <label for="main-instrument">Main Instrument</label>
-                <input type="text" name="mainInstrument" id="main-instrument" class="text-field-style" placeholder="You can skip this field and add it later">
-            </div>
-            <div class="field">
-                <label for="fav-genres">Favourite Genre</label>
-                <input type="text" name="favGenre" id="fav-genres" class="text-field-style" placeholder="You can skip this field and add it later">
-            </div>
-            <div class="field">
-                <label for="city-solo">City</label>
-                <input type="text" name="city" id="city-solo" class="text-field-style">
-            </div>
-        </div>
-        <%
-                    break;
+                break;
             }
         %>
 

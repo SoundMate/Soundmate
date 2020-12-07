@@ -7,6 +7,8 @@
 package it.soundmate.beans;
 
 import it.soundmate.logiccontrollers.RegisterController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class RegisterBean {
 
@@ -14,23 +16,27 @@ public class RegisterBean {
     private String password;
     private String firstName;
     private String lastName;
-    private String city;
-    private String mainInstrument;
-    private String address;
-    private String bandName;
-    private String bandRoomName;
+    private String name;   //Could be the Band Name or the Band Room Name
 
     private final RegisterController registerController = new RegisterController();
+    private final Logger logger = LoggerFactory.getLogger(RegisterBean.class);
 
-    public String getFavGenre() {
-        return favGenre;
+    //RegisterBean for Solo constructor (Generic)
+    public RegisterBean(String email, String password, String firstName, String lastName){
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
-    public void setFavGenre(String favGenre) {
-        this.favGenre = favGenre;
+    //RegisterBean for Band or Band Room constructor
+    public RegisterBean(String email, String password, String firstName, String lastName, String name) {
+        this(email, password, firstName, lastName);
+        this.name = name;
     }
 
-    private String favGenre;
+    public RegisterBean(){}
+
 
     public String getEmail() {
         return email;
@@ -64,59 +70,45 @@ public class RegisterBean {
         this.lastName = lastName;
     }
 
-    public String getCity() {
-        return city;
+    public String getName() {
+        return name;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getMainInstrument() {
-        return mainInstrument;
+    //Returns true if one the common fields is null
+    public boolean checkFields(){
+        return this.email == null || this.password == null || this.firstName == null || this.lastName == null
+        || this.email.isEmpty() || this.password.isEmpty() || this.firstName.isEmpty() || this.lastName.isEmpty();
     }
 
-    public void setMainInstrument(String mainInstrument) {
-        this.mainInstrument = mainInstrument;
+    //Returns true if name is null
+    public boolean checkName() {
+        return (this.name == null || this.name.isEmpty());
     }
 
-    public String getAddress() {
-        return address;
+    public UserBean registerUser(int type) {
+        logger.info("Registering user of type: {}", type);
+        if (!checkFields()) {
+            if (type == 1) {  //When user is solo, name must be null
+                logger.info("Registering solo user");
+                return registerController.registerUser(getEmail(), getPassword(), getFirstName(), getLastName(), type, null);
+            } else {
+                logger.info("Checking name...");
+                if (!checkName()) {
+                    logger.info("Name is not null: {}", getName());
+                    return registerController.registerUser(getEmail(), getPassword(), getFirstName(), getLastName(), type, getName());
+                } else {
+                    logger.info("Band or BandRoom name field is empty");
+                    return null;
+                }
+            }
+        } else {
+            logger.info("Some common fields are empty");
+            return null;
+        }
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getBandName() {
-        return bandName;
-    }
-
-    public void setBandName(String bandName) {
-        this.bandName = bandName;
-    }
-
-    public String getBandRoomName() {
-        return bandRoomName;
-    }
-
-    public void setBandRoomName(String bandRoomName) {
-        this.bandRoomName = bandRoomName;
-    }
-
-    public boolean emptyCommonFields() {
-        return getEmail() == null || getPassword() == null || getFirstName() == null || getLastName() == null;
-    }
-
-    public boolean emptySoloFields() {
-        return getCity() == null;
-    }
-
-    public boolean emptyBandRoomFields() {
-        return getCity() == null || getBandRoomName() == null || getAddress() == null;
-    }
-
-    public UserBean registerUser(String email, String password, String firstName, String lastName, String bandOrRoomName, int type) {
-        return registerController.registerUser(email, password, firstName, lastName, type, bandOrRoomName);
-    }
 }

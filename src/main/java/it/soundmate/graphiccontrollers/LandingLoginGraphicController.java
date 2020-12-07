@@ -36,8 +36,8 @@ public class LandingLoginGraphicController {
             assert stage != null;
             stage.show();
         } else if (event.getSource() == loginBtn) {
-            LoginBean loginBean = new LoginBean();   //Nel Login Bean avviene un controllo di sintassi sui campi
-            UserBean userBean = loginBean.validate(emailTextField.getText(), pswTextField.getText());
+            LoginBean loginBean = new LoginBean(emailTextField.getText(), pswTextField.getText());   //Nel Login Bean avviene un controllo di sintassi sui campi
+            UserBean userBean = loginBean.validate();
             if (userBean == null){
                 logger.error("Error in Login"); //To be handled with Exceptions
                 //TODO: Handle Login Error

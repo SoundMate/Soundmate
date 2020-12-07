@@ -15,8 +15,7 @@ package it.soundmate.graphiccontrollers;
 * single controller.
 * */
 
-import it.soundmate.beans.UserBean;
-import it.soundmate.logiccontrollers.RegisterController;
+import it.soundmate.beans.RegisterBean;
 import it.soundmate.utils.ImagePicker;
 import it.soundmate.utils.Navigator;
 import javafx.event.ActionEvent;
@@ -34,7 +33,6 @@ import org.slf4j.LoggerFactory;
 public class RegisterGraphicController {
 
     private final Logger logger = LoggerFactory.getLogger(RegisterGraphicController.class);
-    private final RegisterController registerController= new RegisterController();
 
     @FXML
     private ImageView imgViewProfile;
@@ -92,11 +90,27 @@ public class RegisterGraphicController {
         *
         * Check if the fields are not empty or
         * there's some error in them.
-        * If there's not then launch the second registration page.
+        * If there's not then register the user.
         * */
 
         if (event.getSource() == continueBtn) {
-            this.registerUser();
+            RegisterBean registerBean;
+            switch (this.assignType()) {
+                case 1:
+                    registerBean = new RegisterBean(emailTextField.getText(), passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText());
+                    break;
+                case 2:
+                case 3:
+                    registerBean = new RegisterBean(emailTextField.getText(), passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), bandOrRoomNameTextField.getText());
+                    break;
+                default:
+                    return;
+            }
+            if (registerBean.registerUser(this.assignType()) != null) {
+                logger.info("User Registered: {} {}", registerBean.getEmail(), registerBean.getPassword());
+            } else {
+                logger.info("User NOT Registered, something went wrong");
+            }
         }
 
     }
@@ -123,20 +137,5 @@ public class RegisterGraphicController {
         }
     }
 
-    private void registerUser() {
-        int type = this.assignType();
-        if (emailTextField.getText().isEmpty() || passwordTextField.getText().isEmpty() || firstNameTextField.getText().isEmpty() || lastNameTextField.getText().isEmpty()) {
-            logger.info("Some fields are blank");
-            //TODO: Handle blank fields
-        } else {
-            UserBean newUser;
-            if (type == 1) {
-                newUser = registerController.registerUser(emailTextField.getText(), passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), type, null);
-            } else {
-                newUser = registerController.registerUser(emailTextField.getText(), passwordTextField.getText(), firstNameTextField.getText(), lastNameTextField.getText(), type, bandOrRoomNameTextField.getText());
-            }
-            logger.info("User Logged: {}", newUser.getEmail());
-        }
-    }
 
 }

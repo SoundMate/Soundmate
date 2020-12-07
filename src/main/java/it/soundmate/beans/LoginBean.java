@@ -12,6 +12,13 @@ public class LoginBean {
     private String email;
     private String password;
 
+    public LoginBean(){}
+
+    public LoginBean(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public String getEmail() { return email; }
 
     public void setEmail(String email) {
@@ -27,11 +34,11 @@ public class LoginBean {
     }
 
     /* Nel Bean si può fare un controllo sintattico sui dati inseriti */
-    public UserBean validate(String email, String password) {
-        if (email.isEmpty() || password.isEmpty()) {
+    public UserBean validate() {
+        if (this.email.isEmpty() || this.password.isEmpty()) {
             return null;
         } else {
-            return LoginController.getInstance().login(email, password);
+            return LoginController.getInstance().login(this.email, this.password);
         }
     }
 }

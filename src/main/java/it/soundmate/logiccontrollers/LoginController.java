@@ -32,9 +32,7 @@ public class LoginController {
     * */
 
     public UserBean login(String email, String password) {
-        UserBean user;
-        user = userDao.getByEmailAndPassword(email, password);
-        return user;
+        return userDao.getByEmailAndPassword(email, password);
     }
 
 }

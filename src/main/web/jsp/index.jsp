@@ -29,7 +29,7 @@
 <%
         } else {
 
-            userBean = loginBean.validate(loginBean.getEmail(), loginBean.getPassword());
+            userBean = loginBean.validate();
             if (userBean != null) {
 
                 session.setAttribute("userID", userBean.getUserID());
