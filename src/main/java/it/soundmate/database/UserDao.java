@@ -7,14 +7,13 @@
 package it.soundmate.database;
 
 import it.soundmate.beans.UserBean;
-import it.soundmate.model.User;
 
 import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDao implements Dao<User> {
+public class UserDao implements Dao<UserBean> {
 
     /*Singleton*/
 
@@ -28,7 +27,7 @@ public class UserDao implements Dao<User> {
     }
 
     @Override
-    public User getByID(long id) {
+    public UserBean getByID(long id) {
         return null;
     }
 
