@@ -6,6 +6,12 @@ public class Room {
     private Double price;
     private String description;
 
+    public Room(int number, Double price, String description) {
+        this.number = number;
+        this.price = price;
+        this.description = description;
+    }
+
     public int getNumber() {
         return number;
     }
@@ -29,4 +35,5 @@ public class Room {
     public void setDescription(String description) {
         this.description = description;
     }
+    
 }

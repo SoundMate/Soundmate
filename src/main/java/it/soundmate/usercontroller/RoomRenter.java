@@ -13,8 +13,24 @@ public class RoomRenter extends User{
         super(userID, email, firstName, lastName, password, photos, profilePic);
     }
 
-    public void addRoom(Room room){
+    public String getAddress() {
+        return address;
+    }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void addRoom(Room room){
+        this.rooms.add(room);
+    }
+    public void removeRoom(Room room){
+        for (int i = 0; i < this.rooms.size(); i++) {
+            if (room.equals(this.rooms.get(i))) {
+                this.rooms.remove(i);
+                break;
+            }
+        }
     }
 
 

@@ -23,4 +23,17 @@ public class Solo extends User{
         this.instrument = instrument;
         this.bands = bands;
     }
+
+    public void joinBand(Band band){
+        this.bands.add(band);
+    }
+    public void leaveBand(Band band) {
+        for (int i = 0; i < this.bands.size(); i++) {
+            if (band.equals(this.bands.get(i))) {
+                this.bands.remove(i);
+                break;
+            }
+        }
+    }
+
 }

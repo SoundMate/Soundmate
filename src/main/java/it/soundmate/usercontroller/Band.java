@@ -23,4 +23,40 @@ public class Band extends User{
         this.members = members;
         this.socials = socials;
     }
+
+    public ArrayList<String> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(ArrayList<String> genres) {
+        this.genres = genres;
+    }
+
+    public void addGenres(String genre){
+        this.genres.add(genre);
+    }
+
+    public ArrayList<Solo> getMembers() {
+        return members;
+    }
+
+    public void setMembers(ArrayList<Solo> members) {
+        this.members = members;
+    }
+
+    public void addMember(Solo member){
+        this.members.add(member);
+    }
+
+    public ArrayList<String> getSocials() {
+        return socials;
+    }
+
+    public void addSocial(String socialLink){
+        this.socials.add(socialLink);
+    }
+
+    public void setSocials(ArrayList<String> socials) {
+        this.socials = socials;
+    }
 }
