@@ -1,10 +1,11 @@
 package it.soundmate.usercontroller;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class BandManager extends User{
 
-    private Band[] bands;
+    private ArrayList<Band> bands;
 
 
 

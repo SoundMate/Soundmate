@@ -1,14 +1,15 @@
 package it.soundmate.usercontroller;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Band extends User{
 
 
-    private String[] genres;
-    private Solo[] members;
+    private ArrayList<String> genres;
+    private ArrayList<Solo> members;
     //private Song songPreviews;
-    private String[] socials;
+    private ArrayList<String> socials;
 
 
     public Band(int userID, String email, String firstName, String lastName, String password, Image[] photos, Image profilePic) {
@@ -16,7 +17,7 @@ public class Band extends User{
     }
 
     public Band(int userID, String email, String firstName, String lastName, String password, Image[] photos,
-                Image profilePic, String[] genres, Solo[] members, String[] socials) {
+                Image profilePic, ArrayList<String> genres, ArrayList<Solo> members, ArrayList<String> socials) {
         super(userID, email, firstName, lastName, password, photos, profilePic);
         this.genres = genres;
         this.members = members;

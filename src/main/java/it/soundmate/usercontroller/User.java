@@ -9,7 +9,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String password;
-    private Image[] photos;
+    //private Image[] photos;
     private Image profilePic;
     //video
 
@@ -20,7 +20,7 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
-        this.photos = photos;
+        //this.photos = photos;
         this.profilePic = profilePic;
     }
 
@@ -44,9 +44,9 @@ public class User {
         return password;
     }
 
-    public Image[] getPhotos() {
-        return photos;
-    }
+//    public Image[] getPhotos() {
+//        return photos;
+//    }
 
     public Image getProfilePic() {
         return profilePic;
@@ -72,9 +72,9 @@ public class User {
         this.password = password;
     }
 
-    public void setPhotos(Image[] photos) {
-        this.photos = photos;
-    }
+//    public void setPhotos(Image[] photos) {
+//        this.photos = photos;
+//    }
 
     public void setProfilePic(Image profilePic) {
         this.profilePic = profilePic;
