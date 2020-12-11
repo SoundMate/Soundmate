@@ -9,8 +9,8 @@ public class RoomRenter extends User{
     private String address;
 
 
-    public RoomRenter(int userID, String email, String firstName, String lastName, String password, Image[] photos, Image profilePic) {
-        super(userID, email, firstName, lastName, password, photos, profilePic);
+    public RoomRenter(User user) {
+        super(user.getUserID(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getPhotos(), user.getProfilePic());
     }
 
     public String getAddress() {

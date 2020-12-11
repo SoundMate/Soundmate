@@ -2,6 +2,7 @@ package it.soundmate.usercontroller;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class User {
 
@@ -15,13 +16,13 @@ public class User {
     //video
 
 
-    public User(int userID, String email, String firstName, String lastName, String password, Image[] photos, Image profilePic) {
+    public User(int userID, String email, String firstName, String lastName, String password, List<Image> photos, Image profilePic) {
         this.userID = userID;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
-        //this.photos = photos;
+        this.photos = (ArrayList<Image>) photos;
         this.profilePic = profilePic;
     }
 
@@ -44,10 +45,6 @@ public class User {
     public String getPassword() {
         return password;
     }
-
-//    public Image[] getPhotos() {
-//        return photos;
-//    }
 
     public Image getProfilePic() {
         return profilePic;
@@ -73,6 +70,7 @@ public class User {
         this.password = password;
     }
 
+    public List<Image> getPhotos() { return this.photos; }
 
     public void setProfilePic(Image profilePic) {
         this.profilePic = profilePic;
@@ -82,4 +80,5 @@ public class User {
         this.photos.add(pic);
         //database upload
     }
+
 }

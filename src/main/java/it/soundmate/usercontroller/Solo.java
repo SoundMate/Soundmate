@@ -2,6 +2,7 @@ package it.soundmate.usercontroller;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Solo extends User{
 
@@ -11,22 +12,22 @@ public class Solo extends User{
     private ArrayList<Band> bands;
 
 
-    public Solo(int userID, String email, String firstName, String lastName, String password, Image[] photos, Image profilePic) {
-        super(userID, email, firstName, lastName, password, photos, profilePic);
+    public Solo(User user) {
+        super(user.getUserID(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getPhotos(), user.getProfilePic());
     }
 
-    public Solo(int userID, String email, String firstName, String lastName, String password, Image[] photos,
-                Image profilePic, ArrayList<String> favouriteGenres, int age, String instrument, ArrayList<Band> bands) {
-        super(userID, email, firstName, lastName, password, photos, profilePic);
-        this.favouriteGenres = favouriteGenres;
+    public Solo(User user, List<String> favouriteGenres, int age, String instrument, List<Band> bands) {
+        this(user);
+        this.favouriteGenres = (ArrayList<String>) favouriteGenres;
         this.age = age;
         this.instrument = instrument;
-        this.bands = bands;
+        this.bands = (ArrayList<Band>) bands;
     }
 
     public void joinBand(Band band){
         this.bands.add(band);
     }
+
     public void leaveBand(Band band) {
         for (int i = 0; i < this.bands.size(); i++) {
             if (band.equals(this.bands.get(i))) {
@@ -34,6 +35,30 @@ public class Solo extends User{
                 break;
             }
         }
+    }
+
+    public List<String> getFavouriteGenres() {
+        return favouriteGenres;
+    }
+
+    public void setFavouriteGenres(List<String> favouriteGenres) {
+        this.favouriteGenres = (ArrayList<String>) favouriteGenres;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getInstrument() {
+        return instrument;
+    }
+
+    public void setInstrument(String instrument) {
+        this.instrument = instrument;
     }
 
 }

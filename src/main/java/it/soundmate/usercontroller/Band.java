@@ -1,62 +1,48 @@
 package it.soundmate.usercontroller;
 
-import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Band extends User{
 
-
     private ArrayList<String> genres;
     private ArrayList<Solo> members;
-    //private Song songPreviews;
     private ArrayList<String> socials;
+    //private Song songPreviews;
 
-
-    public Band(int userID, String email, String firstName, String lastName, String password, Image[] photos, Image profilePic) {
-        super(userID, email, firstName, lastName, password, photos, profilePic);
+    public Band(User user) {
+        super(user.getUserID(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getPhotos(), user.getProfilePic());
     }
 
-    public Band(int userID, String email, String firstName, String lastName, String password, Image[] photos,
-                Image profilePic, ArrayList<String> genres, ArrayList<Solo> members, ArrayList<String> socials) {
-        super(userID, email, firstName, lastName, password, photos, profilePic);
-        this.genres = genres;
-        this.members = members;
-        this.socials = socials;
+    public Band(User user, List<String> genres, List<String> socials, List<Solo> members) {
+        this(user);
+        this.genres = (ArrayList<String>) genres;
+        this.socials = (ArrayList<String>) socials;
+        this.members = (ArrayList<Solo>) members;
     }
 
-    public ArrayList<String> getGenres() {
+    public List<String> getGenres() {
         return genres;
     }
 
-    public void setGenres(ArrayList<String> genres) {
-        this.genres = genres;
+    public void setGenres(List<String> genres) {
+        this.genres = (ArrayList<String>) genres;
     }
 
-    public void addGenres(String genre){
-        this.genres.add(genre);
-    }
-
-    public ArrayList<Solo> getMembers() {
+    public List<Solo> getMembers() {
         return members;
     }
 
-    public void setMembers(ArrayList<Solo> members) {
-        this.members = members;
+    public void setMembers(List<Solo> members) {
+        this.members = (ArrayList<Solo>) members;
     }
 
-    public void addMember(Solo member){
-        this.members.add(member);
-    }
-
-    public ArrayList<String> getSocials() {
+    public List<String> getSocials() {
         return socials;
     }
 
-    public void addSocial(String socialLink){
-        this.socials.add(socialLink);
+    public void setSocials(List<String> socials) {
+        this.socials = (ArrayList<String>) socials;
     }
 
-    public void setSocials(ArrayList<String> socials) {
-        this.socials = socials;
-    }
 }
