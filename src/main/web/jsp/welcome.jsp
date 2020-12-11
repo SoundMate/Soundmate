@@ -13,7 +13,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html>
 <head>
     <title>Welcome to Soundmate</title>
     <link rel="stylesheet" href="../css/welcome.css">
@@ -53,4 +52,3 @@
     </div>
 
 </body>
-</html>

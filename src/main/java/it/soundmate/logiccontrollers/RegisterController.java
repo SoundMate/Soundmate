@@ -4,6 +4,20 @@
  * Last Modified: 11/12/20, 15:42
  */
 
+/**
+ * Register Controller
+ *
+ * The register controller handles the logic for the registration process.
+ * The method "registerUser()" is shared between the three types of users: Band, BandRoom, Solo.
+ * Depending on the parameter "type" the method performs a registration in the DB
+ * for the type of user, registering the newly user in the User table and in the
+ * corresponding table in the DB.
+ *
+ * Solo -> Registers in Users table and in Solo table (same ID)
+ * Band -> Registers in Users table and in BandManager table with a foreign key on the Band table for the Band managed
+ * BandRoom -> Registers in Users table and in BandRoomManager table (same ID).
+ * */
+
 package it.soundmate.logiccontrollers;
 
 import it.soundmate.beans.UserBean;
