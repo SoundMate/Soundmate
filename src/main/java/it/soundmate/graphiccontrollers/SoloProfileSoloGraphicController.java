@@ -11,8 +11,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
 public class SoloProfileSoloGraphicController {
@@ -79,6 +81,8 @@ public class SoloProfileSoloGraphicController {
 
     void initData(User user) {
         this.nameLabel.setText(user.getFirstName() + " " + user.getLastName());
+        Image addImage = new Image(getClass().getResourceAsStream("/icons/add.png")); //TODO: Use a stack pane
+        this.instrumentCircle.setFill(new ImagePattern(addImage));
     }
 
 }
