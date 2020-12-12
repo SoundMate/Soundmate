@@ -119,6 +119,7 @@ public class SoloProfileSoloGraphicController {
             Image profilePic = new Image(user.getProfilePic());
             this.profilePicCircle.setFill(new ImagePattern(profilePic));
         }
+        this.profileStackPane.setStyle("-fx-background-color: #00b540");
 
     }
 
