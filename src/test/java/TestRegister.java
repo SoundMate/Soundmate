@@ -5,8 +5,7 @@
  */
 
 import it.soundmate.beans.RegisterBean;
-import it.soundmate.beans.UserBean;
-import it.soundmate.logiccontrollers.RegisterController;
+import it.soundmate.model.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -17,8 +16,8 @@ class TestRegister {
     void testRegisterNullEmail() {
         RegisterBean registerBean = new RegisterBean("", "pass", "First", "Last", "Name");
         for (int i = 1; i <= 3 ; i++) {
-            UserBean userBean = registerBean.registerUser(i);
-            assertNull(userBean);
+            User user = registerBean.registerUser(i);
+            assertNull(user);
         }
     }
 
@@ -26,8 +25,8 @@ class TestRegister {
     void testRegisterNullPass() {
         RegisterBean registerBean = new RegisterBean("email", "", "First", "Last", "Name");
         for (int i = 1; i <= 3 ; i++) {
-            UserBean userBean = registerBean.registerUser(i);
-            assertNull(userBean);
+            User user = registerBean.registerUser(i);
+            assertNull(user);
         }
     }
 
@@ -35,8 +34,8 @@ class TestRegister {
     void testRegisterNullFirst() {
         RegisterBean registerBean = new RegisterBean("email", "pass", "", "Last", "Name");
         for (int i = 1; i <= 3 ; i++) {
-            UserBean userBean = registerBean.registerUser(i);
-            assertNull(userBean);
+            User user = registerBean.registerUser(i);
+            assertNull(user);
         }
     }
 
@@ -44,8 +43,8 @@ class TestRegister {
     void testRegisterNullLast() {
         RegisterBean registerBean = new RegisterBean("email", "pass", "First", "", "Name");
         for (int i = 1; i <= 3 ; i++) {
-            UserBean userBean = registerBean.registerUser(i);
-            assertNull(userBean);
+            User user = registerBean.registerUser(i);
+            assertNull(user);
         }
     }
 
@@ -55,8 +54,8 @@ class TestRegister {
     void testRegisterNullName() {
         RegisterBean registerBean = new RegisterBean("email", "pass", "First", "Last", "");
         for (int i = 2; i <= 3 ; i++) {
-            UserBean userBean = registerBean.registerUser(i);
-            assertNull(userBean);
+            User user = registerBean.registerUser(i);
+            assertNull(user);
         }
     }
 

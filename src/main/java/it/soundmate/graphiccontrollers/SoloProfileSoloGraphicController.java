@@ -6,7 +6,7 @@
 
 package it.soundmate.graphiccontrollers;
 
-import it.soundmate.beans.UserBean;
+import it.soundmate.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -77,8 +77,8 @@ public class SoloProfileSoloGraphicController {
 
     }
 
-    void initData(UserBean userBean) {
-        this.nameLabel.setText(userBean.getFirstName() + " " + userBean.getLastName());
+    void initData(User user) {
+        this.nameLabel.setText(user.getFirstName() + " " + user.getLastName());
     }
 
 }

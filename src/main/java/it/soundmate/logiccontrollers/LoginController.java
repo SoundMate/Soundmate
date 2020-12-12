@@ -6,7 +6,7 @@
 
 package it.soundmate.logiccontrollers;
 
-import it.soundmate.beans.UserBean;
+import it.soundmate.model.User;
 import it.soundmate.database.UserDao;
 
 public class LoginController {
@@ -31,7 +31,7 @@ public class LoginController {
     *
     * */
 
-    public UserBean login(String email, String password) {
+    public User login(String email, String password) {
         return userDao.getByEmailAndPassword(email, password);
     }
 

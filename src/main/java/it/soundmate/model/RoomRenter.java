@@ -1,16 +1,21 @@
-package it.soundmate.usercontroller;
+/*
+ * Copyright (c) 2020.
+ * This file was created by Soundmate organization Lorenzo Pantano & Matteo D'Alessandro
+ * Last Modified: 12/12/20, 14:38
+ */
 
-import java.awt.*;
+package it.soundmate.model;
+
 import java.util.ArrayList;
 
-public class RoomRenter extends User{
+public class RoomRenter extends User {
 
     private ArrayList<Room> rooms;
     private String address;
 
 
     public RoomRenter(User user) {
-        super(user.getUserID(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getPhotos(), user.getProfilePic());
+        super(user.getUserID(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getProfilePic(), UserType.BAND_ROOM_MANAGER);
     }
 
     public String getAddress() {

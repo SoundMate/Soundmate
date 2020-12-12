@@ -1,4 +1,4 @@
-<%@ page import="it.soundmate.beans.UserBean" %><%--
+<%@ page import="it.soundmate.model.User" %><%--
   ~ Copyright (c) 2020.
   ~ This file was created by Soundmate organization Lorenzo Pantano & Matteo D'Alessandro
   ~ Last Modified: 01/12/20, 22:15
@@ -25,7 +25,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <jsp:useBean id="registerBean" scope="request" class="it.soundmate.beans.RegisterBean"/>
 <jsp:setProperty name="registerBean" property="*"/>
-<jsp:useBean id="userBean" scope="session" class="it.soundmate.beans.UserBean"/>
+<jsp:useBean id="user" scope="session" class="it.soundmate.model.User"/>
 
 <!-- Register Request -->
 <%
@@ -47,8 +47,8 @@
                         </div>
 <%
                     } else {
-                        userBean = registerBean.registerUser(3);
-                        if (userBean != null) {
+                        user = registerBean.registerUser(3);
+                        if (user != null) {
                             //Forward to page with user parameters
                         } else {
                             //Display error message
@@ -69,8 +69,8 @@
                             </div>
 <%
                     } else {
-                        userBean = registerBean.registerUser(2);
-                        if (userBean != null) {
+                        user = registerBean.registerUser(2);
+                        if (user != null) {
                             //Forward to page with user parameters
                         } else {
                             //Display error message
@@ -83,8 +83,8 @@
                     }
                     break;
                 case "Solo":
-                    userBean = registerBean.registerUser(1);
-                    if (userBean != null) {
+                    user = registerBean.registerUser(1);
+                    if (user != null) {
                         //Forward
                     } else {
 %>

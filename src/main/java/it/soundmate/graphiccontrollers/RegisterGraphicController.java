@@ -15,21 +15,18 @@ package it.soundmate.graphiccontrollers;
 * single controller.
 * */
 
-import it.soundmate.App;
 import it.soundmate.beans.RegisterBean;
-import it.soundmate.beans.UserBean;
+import it.soundmate.model.User;
 import it.soundmate.utils.ImagePicker;
 import it.soundmate.utils.Navigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +36,9 @@ import java.io.IOException;
 public class RegisterGraphicController {
 
     private final Logger logger = LoggerFactory.getLogger(RegisterGraphicController.class);
+
+    @FXML
+    private BorderPane borderPane;
 
     @FXML
     private ImageView imgViewProfile;
@@ -112,20 +112,14 @@ public class RegisterGraphicController {
                 default:
                     return;
             }
-            UserBean registeredUserBean = registerBean.registerUser(this.assignType());
-            if (registeredUserBean != null) {
+            User registeredUser = registerBean.registerUser(this.assignType());
+            if (registeredUser != null) {
                 logger.info("User Registered: {} {}", registerBean.getEmail(), registerBean.getPassword());
                 try {
-                    FXMLLoader loader = new FXMLLoader(App.class.getResource("view/SoloProfileSolo.fxml"));
-                    Scene scene = new Scene(loader.load());
-                    Stage currentStage = (Stage) this.continueBtn.getScene().getWindow();
-                    currentStage.setScene(scene);
-                    SoloProfileSoloGraphicController soloProfileSoloGraphicController = loader.getController();
-                    soloProfileSoloGraphicController.initData(registeredUserBean);
-                    currentStage.show();
+                    LandingLoginGraphicController.loginUserUI(registeredUser, this.borderPane);
                 } catch (IOException e) {
                     e.printStackTrace();
-                    logger.info("IO Exception loafing FXML SoloProfileSolo.fxml");
+                    logger.info("IO Exception loading fxml");
                 }
             } else {
                 logger.info("User NOT Registered, something went wrong");

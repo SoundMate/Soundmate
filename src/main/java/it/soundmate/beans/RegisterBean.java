@@ -7,6 +7,7 @@
 package it.soundmate.beans;
 
 import it.soundmate.logiccontrollers.RegisterController;
+import it.soundmate.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -89,7 +90,7 @@ public class RegisterBean {
         return (this.name == null || this.name.isEmpty());
     }
 
-    public UserBean registerUser(int type) {
+    public User registerUser(int type) {
         logger.info("Registering user of type: {}", type);
         if (!checkFields()) {
             if (type == 1) {  //When user is solo, name must be null

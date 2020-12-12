@@ -20,7 +20,7 @@
 
 package it.soundmate.logiccontrollers;
 
-import it.soundmate.beans.UserBean;
+import it.soundmate.model.User;
 import it.soundmate.database.UserDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,11 +30,11 @@ public class RegisterController {
     private final UserDao userDao = UserDao.getInstance();
     private final Logger logger = LoggerFactory.getLogger(RegisterController.class);
 
-    public UserBean registerUser(String email, String password, String firstName, String lastName, int type, String bandOrRoomName){
+    public User registerUser(String email, String password, String firstName, String lastName, int type, String bandOrRoomName){
         /*Register and then Login the registered User*/
-        if (userDao.registerUser(email, password, firstName, lastName)) {
+        if (userDao.registerUser(email, password, firstName, lastName, type)) {
             logger.info("User Registered: {} {}", email, password);
-            UserBean loginUser = userDao.getByEmailAndPassword(email, password);
+            User loginUser = userDao.getByEmailAndPassword(email, password);
             switch (type) {
                 case 1:
                     //Register solo data

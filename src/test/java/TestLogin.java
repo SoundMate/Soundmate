@@ -5,7 +5,7 @@
  */
 
 import it.soundmate.beans.LoginBean;
-import it.soundmate.beans.UserBean;
+import it.soundmate.model.User;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -16,8 +16,8 @@ class TestLogin {
         LoginBean loginBean = new LoginBean();
         loginBean.setEmail("dummy.email");
         loginBean.setPassword("dummy password");
-        UserBean userBean = loginBean.validate();
-        String name = userBean.getFirstName();
+        User user = loginBean.validate();
+        String name = user.getFirstName();
         assertNull(name);
     }
 
@@ -26,8 +26,8 @@ class TestLogin {
         LoginBean loginBean = new LoginBean();
         loginBean.setEmail("");
         loginBean.setPassword("dummy password");
-        UserBean userBean = loginBean.validate();
-        assertNull(userBean);
+        User user = loginBean.validate();
+        assertNull(user);
     }
 
     @Test
@@ -35,8 +35,8 @@ class TestLogin {
         LoginBean loginBean = new LoginBean();
         loginBean.setEmail("dummy.email");
         loginBean.setPassword("");
-        UserBean userBean = loginBean.validate();
-        assertNull(userBean);
+        User user = loginBean.validate();
+        assertNull(user);
     }
 
 }

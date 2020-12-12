@@ -1,21 +1,23 @@
-package it.soundmate.usercontroller;
+/*
+ * Copyright (c) 2020.
+ * This file was created by Soundmate organization Lorenzo Pantano & Matteo D'Alessandro
+ * Last Modified: 12/12/20, 14:38
+ */
+
+package it.soundmate.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Band extends User{
+public class Band {
 
     private ArrayList<String> genres;
     private ArrayList<Solo> members;
     private ArrayList<String> socials;
     //private Song songPreviews;
 
-    public Band(User user) {
-        super(user.getUserID(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getPhotos(), user.getProfilePic());
-    }
 
-    public Band(User user, List<String> genres, List<String> socials, List<Solo> members) {
-        this(user);
+    public Band(List<String> genres, List<String> socials, List<Solo> members) {
         this.genres = (ArrayList<String>) genres;
         this.socials = (ArrayList<String>) socials;
         this.members = (ArrayList<Solo>) members;

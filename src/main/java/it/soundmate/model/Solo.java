@@ -1,10 +1,15 @@
-package it.soundmate.usercontroller;
+/*
+ * Copyright (c) 2020.
+ * This file was created by Soundmate organization Lorenzo Pantano & Matteo D'Alessandro
+ * Last Modified: 12/12/20, 14:38
+ */
 
-import java.awt.*;
+package it.soundmate.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Solo extends User{
+public class Solo extends User {
 
     private ArrayList<String> favouriteGenres;
     private int age;
@@ -13,7 +18,7 @@ public class Solo extends User{
 
 
     public Solo(User user) {
-        super(user.getUserID(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getPhotos(), user.getProfilePic());
+        super(user.getUserID(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getProfilePic(), UserType.SOLO);
     }
 
     public Solo(User user, List<String> favouriteGenres, int age, String instrument, List<Band> bands) {

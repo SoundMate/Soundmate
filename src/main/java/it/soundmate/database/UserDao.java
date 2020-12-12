@@ -6,14 +6,15 @@
 
 package it.soundmate.database;
 
-import it.soundmate.beans.UserBean;
+import it.soundmate.model.User;
+import it.soundmate.model.UserType;
 
 import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDao implements Dao<UserBean> {
+public class UserDao implements Dao<User> {
 
     /*Singleton*/
 
@@ -27,23 +28,36 @@ public class UserDao implements Dao<UserBean> {
     }
 
     @Override
-    public UserBean getByID(long id) {
+    public User getByID(long id) {
         return null;
     }
 
-    public UserBean getByEmailAndPassword(String email, String password) {
+    public User getByEmailAndPassword(String email, String password) {
         String query = "select * from \"Users\" where email=? and password=?;";
         ResultSet result;
         try (PreparedStatement preparedStatement = Connector.getInstance().getConnection().prepareStatement(query)) {
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, password);
             result = preparedStatement.executeQuery();
-            UserBean user = new UserBean();
+            User user = new User();
             while (result.next()) {
                 user.setFirstName(result.getString("firstName"));
                 user.setLastName(result.getString("lastName"));
                 user.setEmail(result.getString("email"));
                 user.setUserID(result.getInt("id"));
+                switch (result.getInt("type")) {
+                    case 1:
+                        user.setUserType(UserType.SOLO);
+                        break;
+                    case 2:
+                        user.setUserType(UserType.BAND_MANAGER);
+                        break;
+                    case 3:
+                        user.setUserType(UserType.BAND_ROOM_MANAGER);
+                        break;
+                    default:
+                        return null;
+                }
             }
             return user;
         } catch (SQLException e) {
@@ -53,13 +67,14 @@ public class UserDao implements Dao<UserBean> {
         return null;
     }
 
-    public boolean registerUser(String email, String password, String firstName, String lastName) {
-        String query = "insert into \"Users\" (email, password, \"firstName\", \"lastName\") values (?,?,?,?);";
+    public boolean registerUser(String email, String password, String firstName, String lastName, int type) {
+        String query = "insert into \"Users\" (email, password, \"firstName\", \"lastName\", type) values (?,?,?,?,?);";
         try (PreparedStatement preparedStatement = Connector.getInstance().getConnection().prepareStatement(query)) {
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, password);
             preparedStatement.setString(3, firstName);
             preparedStatement.setString(4, lastName);
+            preparedStatement.setInt(5,type);
             //executeUpdate returns the numbers of affected row
             return preparedStatement.executeUpdate() == 1;
         } catch (SQLException sqlException) {

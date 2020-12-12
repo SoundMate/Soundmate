@@ -1,14 +1,20 @@
-package it.soundmate.usercontroller;
+/*
+ * Copyright (c) 2020.
+ * This file was created by Soundmate organization Lorenzo Pantano & Matteo D'Alessandro
+ * Last Modified: 12/12/20, 14:38
+ */
+
+package it.soundmate.model;
 
 import java.util.ArrayList;
 
-public class BandManager extends User{
+public class BandManager extends User {
 
     private ArrayList<Band> managedBands;
 
 
     public BandManager(User user) {
-        super(user.getUserID(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getPhotos(), user.getProfilePic());
+        super(user.getUserID(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getProfilePic(), UserType.BAND_MANAGER);
     }
 
     public void addBandManagement(Band band){

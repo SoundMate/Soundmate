@@ -7,6 +7,7 @@
 package it.soundmate.beans;
 
 import it.soundmate.logiccontrollers.LoginController;
+import it.soundmate.model.User;
 
 public class LoginBean {
     private String email;
@@ -34,7 +35,7 @@ public class LoginBean {
     }
 
     /* Nel Bean si può fare un controllo sintattico sui dati inseriti */
-    public UserBean validate() {
+    public User validate() {
         if (this.email.isEmpty() || this.password.isEmpty()) {
             return null;
         } else {

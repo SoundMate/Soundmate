@@ -15,7 +15,7 @@
 
 <%@page contentType="text/html;charset=UTF-8"%>
 <jsp:useBean id="loginBean" scope="request" class="it.soundmate.beans.LoginBean"/>
-<jsp:useBean id="userBean" scope="session" class="it.soundmate.beans.UserBean"/>
+<jsp:useBean id="user" scope="session" class="it.soundmate.model.User"/>
 <jsp:setProperty name="loginBean" property="*"/>
 
 <!-- Login Request -->
@@ -29,12 +29,12 @@
 <%
         } else {
 
-            userBean = loginBean.validate();
-            if (userBean != null) {
+            user = loginBean.validate();
+            if (user != null) {
 
-                session.setAttribute("userID", userBean.getUserID());
-                session.setAttribute("firstName", userBean.getFirstName());
-                session.setAttribute("lastName", userBean.getLastName());
+                session.setAttribute("userID", user.getUserID());
+                session.setAttribute("firstName", user.getFirstName());
+                session.setAttribute("lastName", user.getLastName());
 %>
                 <jsp:forward  page="welcome.jsp"/>  <!--Se il validate ritorna true allora naviga all'altra pagina-->
 
