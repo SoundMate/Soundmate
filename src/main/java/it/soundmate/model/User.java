@@ -7,6 +7,7 @@
 package it.soundmate.model;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +19,13 @@ public class User {
     private String lastName;
     private String password;
     private ArrayList<File> photos;
-    private File profilePic;
+    private InputStream profilePic;
     private UserType userType;
     //video
 
-    public User(){};
+    public User(){}
 
-    public User(int userID, String email, String firstName, String lastName, String password, File profilePic, UserType userType) {
+    public User(int userID, String email, String firstName, String lastName, String password, InputStream profilePic, UserType userType) {
         this.userID = userID;
         this.email = email;
         this.firstName = firstName;
@@ -58,11 +59,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public File getProfilePic() {
+    public InputStream getProfilePic() {
         return profilePic;
     }
 
-    public void setProfilePic(File profilePic) {
+    public void setProfilePic(InputStream profilePic) {
         this.profilePic = profilePic;
     }
 

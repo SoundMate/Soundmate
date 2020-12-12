@@ -38,19 +38,14 @@ public class RegisterController {
             switch (type) {
                 case 1:
                     //Register solo data
-                    if (userDao.registerSoloFromUsers(loginUser.getUserID())){
-                        return loginUser;
-                    } else return null;
+                    return userDao.registerSoloFromUsers(loginUser.getUserID()) ? loginUser : null;
                 case 2:
                     //Register band data and band manager data
-                    if (userDao.registerBand(bandOrRoomName) && userDao.registerBandManager(loginUser.getUserID(), bandOrRoomName)){
-                        return loginUser;
-                    } else return null;
+                    return userDao.registerBand(bandOrRoomName) && userDao.registerBandManager(loginUser.getUserID(), bandOrRoomName)
+                            ? loginUser : null;
                 case 3:
                     //Register Band Room Manager
-                    if (userDao.registerBandRoomManager(loginUser.getUserID(), bandOrRoomName)) {
-                        return loginUser;
-                    } else return null;
+                    return userDao.registerBandManager(loginUser.getUserID(), bandOrRoomName) ? loginUser : null;
                 default:
                     return null;
 

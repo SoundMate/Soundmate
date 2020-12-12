@@ -9,6 +9,7 @@ package it.soundmate.database;
 import it.soundmate.model.User;
 import it.soundmate.model.UserType;
 
+import java.io.InputStream;
 import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -45,6 +46,10 @@ public class UserDao implements Dao<User> {
                 user.setLastName(result.getString("lastName"));
                 user.setEmail(result.getString("email"));
                 user.setUserID(result.getInt("id"));
+                InputStream profilePicBytes = result.getBinaryStream("profile_pic");
+                if (profilePicBytes != null) {
+                    user.setProfilePic(profilePicBytes);
+                }
                 switch (result.getInt("type")) {
                     case 1:
                         user.setUserType(UserType.SOLO);
@@ -135,4 +140,16 @@ public class UserDao implements Dao<User> {
         }
     }
 
+    public boolean saveProfilePicForUser(InputStream inputStream, int userID) {
+        String query;
+        query = "update \"Users\" set profile_pic = (?) where id = (?);";
+        try (PreparedStatement preparedStatement = Connector.getInstance().getConnection().prepareStatement(query);){
+            preparedStatement.setBinaryStream(1, inputStream);
+            preparedStatement.setInt(2, userID);
+            return preparedStatement.executeUpdate() == 1;
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+            return false;
+        }
+    }
 }
