@@ -14,7 +14,10 @@ public class Band {
     private ArrayList<String> genres;
     private ArrayList<Solo> members;
     private ArrayList<String> socials;
+    private String bandName;
     //private Song songPreviews;
+
+    public Band(){};
 
 
     public Band(List<String> genres, List<String> socials, List<Solo> members) {
@@ -47,4 +50,11 @@ public class Band {
         this.socials = (ArrayList<String>) socials;
     }
 
+    public String getBandName() {
+        return bandName;
+    }
+
+    public void setBandName(String bandName) {
+        this.bandName = bandName;
+    }
 }

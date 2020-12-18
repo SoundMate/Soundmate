@@ -6,26 +6,20 @@
 
 package it.soundmate.logiccontrollers;
 
-import it.soundmate.database.UserDao;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import it.soundmate.database.SoloDao;
+import it.soundmate.model.Solo;
+import it.soundmate.model.User;
 
 public class SoloProfileSoloController {
 
-    UserDao userDao = UserDao.getInstance();
+    private SoloDao soloDao = SoloDao.getInstance();
 
-    public boolean saveProfilePicToDB(File image, int userID) {
-        try {
-            InputStream inputStream = new FileInputStream(image);
-            return userDao.saveProfilePicForUser(inputStream, userID);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return false;
-        }
+    public Solo getSoloByUser(User user) {
+        return soloDao.getSoloByUser(user);
     }
 
+    public boolean addGenre(String genre, Solo solo) {
+        return soloDao.addGenreToSolo(genre, solo);
+    }
 }
 

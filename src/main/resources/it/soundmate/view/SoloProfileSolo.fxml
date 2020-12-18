@@ -210,9 +210,12 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Label>
-                        <HBox alignment="CENTER_LEFT">
+                        <HBox fx:id="genresHbox" alignment="CENTER_LEFT">
                            <children>
-                              <Button fx:id="addGenreBtn" mnemonicParsing="false" onAction="#onAddButtonsAction" style="-fx-background-color: #00B540;" text="Add +" textFill="WHITE" />
+                              <Button fx:id="addGenreBtn" mnemonicParsing="false" onAction="#onAddButtonsAction" style="-fx-background-color: #00B540;" text="Add +" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin></Button>
                            </children>
                         </HBox>
                      </children>

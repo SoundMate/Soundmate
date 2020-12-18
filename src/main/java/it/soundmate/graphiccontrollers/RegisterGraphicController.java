@@ -31,6 +31,7 @@ import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
 
 public class RegisterGraphicController {
@@ -83,8 +84,8 @@ public class RegisterGraphicController {
 
         if (event.getSource() == addProfilePicBtn) {
             ImagePicker imagePicker = new ImagePicker();
-            int imgResult = imagePicker.chooseImage(imgViewProfile);
-            if (imgResult == 0) {
+            File imgResult = imagePicker.chooseImage(imgViewProfile);
+            if (imgResult == null) {
                 addProfilePicBtn.setText("Change image");
             } else {
                 logger.debug("Error uploading image");

@@ -11,22 +11,22 @@ import java.util.List;
 
 public class Solo extends User {
 
-    private ArrayList<String> favouriteGenres;
+    private ArrayList<String> favouriteGenres = new ArrayList<>();
     private int age;
-    private String instrument;
-    private ArrayList<Band> bands;
+    private ArrayList<String> instrument = new ArrayList<>();
+    private ArrayList<Band> bands = new ArrayList<>();
 
 
     public Solo(User user) {
         super(user.getUserID(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getPassword(), user.getProfilePic(), UserType.SOLO);
     }
 
-    public Solo(User user, List<String> favouriteGenres, int age, String instrument, List<Band> bands) {
+    public Solo(User user, List<String> favouriteGenres, int age, List<String> instrument, List<Band> bands) {
         this(user);
-        this.favouriteGenres = (ArrayList<String>) favouriteGenres;
+        this.favouriteGenres.addAll(favouriteGenres);
         this.age = age;
-        this.instrument = instrument;
-        this.bands = (ArrayList<Band>) bands;
+        this.instrument.addAll(instrument);
+        this.bands.addAll(bands);
     }
 
     public void joinBand(Band band){
@@ -42,12 +42,20 @@ public class Solo extends User {
         }
     }
 
+    public void setBands(List<Band> bands) {
+        this.bands.addAll(bands);
+    }
+
     public List<String> getFavouriteGenres() {
         return favouriteGenres;
     }
 
     public void setFavouriteGenres(List<String> favouriteGenres) {
-        this.favouriteGenres = (ArrayList<String>) favouriteGenres;
+        this.favouriteGenres.addAll(favouriteGenres);
+    }
+
+    public void addFavGenre(String favGenre) {
+        this.favouriteGenres.add(favGenre);
     }
 
     public int getAge() {
@@ -58,12 +66,12 @@ public class Solo extends User {
         this.age = age;
     }
 
-    public String getInstrument() {
+    public List<String> getInstrument() {
         return instrument;
     }
 
-    public void setInstrument(String instrument) {
-        this.instrument = instrument;
+    public void setInstrument(List<String> instrument) {
+        this.instrument = (ArrayList<String>) instrument;
     }
 
 }

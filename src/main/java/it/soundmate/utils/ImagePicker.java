@@ -22,13 +22,13 @@ public class ImagePicker {
         configureFileChooser(this.fileChooser);
     }
 
-    public int chooseImage(ImageView imageView) {
+    public File chooseImage(ImageView imageView) {
         File file = this.fileChooser.showOpenDialog(imageView.getScene().getWindow());
         if (file != null) {
             Image chosenImage = new Image(file.toURI().toString());
             imageView.setImage(chosenImage);
-            return 0;
-        } else return 1;
+            return file;
+        } else return null;
     }
 
     public File chooseImage(Circle circle) {

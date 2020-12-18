@@ -6,6 +6,8 @@
 
 package it.soundmate.database;
 
+import it.soundmate.model.Band;
+import it.soundmate.model.Solo;
 import it.soundmate.model.User;
 import it.soundmate.model.UserType;
 
@@ -14,6 +16,7 @@ import java.sql.Array;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 public class UserDao implements Dao<User> {
 
@@ -33,6 +36,7 @@ public class UserDao implements Dao<User> {
         return null;
     }
 
+    @Override
     public User getByEmailAndPassword(String email, String password) {
         String query = "select * from \"Users\" where email=? and password=?;";
         ResultSet result;
@@ -143,13 +147,30 @@ public class UserDao implements Dao<User> {
     public boolean saveProfilePicForUser(InputStream inputStream, int userID) {
         String query;
         query = "update \"Users\" set profile_pic = (?) where id = (?);";
-        try (PreparedStatement preparedStatement = Connector.getInstance().getConnection().prepareStatement(query);){
+        try (PreparedStatement preparedStatement = Connector.getInstance().getConnection().prepareStatement(query)){
             preparedStatement.setBinaryStream(1, inputStream);
             preparedStatement.setInt(2, userID);
             return preparedStatement.executeUpdate() == 1;
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
             return false;
+        }
+    }
+
+
+    public Band getBandByID(Integer bandID) {
+        Band band = new Band();
+        String query = "select * from \"Bands\" where \"bandID\" = (?)";
+        try (PreparedStatement preparedStatement = Connector.getInstance().getConnection().prepareStatement(query)) {
+            preparedStatement.setInt(1,bandID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                band.setBandName(resultSet.getString("band_name"));
+                band.setGenres(Arrays.asList((String []) resultSet.getArray("genres").getArray()));
+            }
+            return band;
+        } catch (SQLException e) {
+            return null;
         }
     }
 }
