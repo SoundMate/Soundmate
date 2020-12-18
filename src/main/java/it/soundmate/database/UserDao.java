@@ -7,7 +7,6 @@
 package it.soundmate.database;
 
 import it.soundmate.model.Band;
-import it.soundmate.model.Solo;
 import it.soundmate.model.User;
 import it.soundmate.model.UserType;
 
@@ -173,4 +172,59 @@ public class UserDao implements Dao<User> {
             return null;
         }
     }
+
+    public boolean updatePassword(User user, String password) {
+        String query = "update \"Users\" set password = (?) where id = (?)";
+        try (PreparedStatement preparedStatement = Connector.getInstance().getConnection().prepareStatement(query)) {
+            preparedStatement.setString(1, password);
+            preparedStatement.setInt(2, user.getUserID());
+            return preparedStatement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    public boolean updateFirstName(User user, String firstName) {
+        String query = "update \"Users\" set \"firstName\" = (?) where id = (?)";
+        try (PreparedStatement preparedStatement = Connector.getInstance().getConnection().prepareStatement(query)) {
+            preparedStatement.setString(1, firstName);
+            preparedStatement.setInt(2, user.getUserID());
+            return preparedStatement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    public boolean updateLastName(User user, String lastName) {
+        String query = "update \"Users\" set \"lastName\" = (?) where id = (?)";
+        try (PreparedStatement preparedStatement = Connector.getInstance().getConnection().prepareStatement(query)) {
+            preparedStatement.setString(1, lastName);
+            preparedStatement.setInt(2, user.getUserID());
+            return preparedStatement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    public boolean updateEmail(User user, String email) {
+        String query = "update \"Users\" set email = (?) where id = (?)";
+        try (PreparedStatement preparedStatement = Connector.getInstance().getConnection().prepareStatement(query)) {
+            preparedStatement.setString(1, email);
+            preparedStatement.setInt(2, user.getUserID());
+            return preparedStatement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    public boolean deleteUser(User user){
+        String query = "delete from \"Users\" where id = (?)";
+        try (PreparedStatement preparedStatement = Connector.getInstance().getConnection().prepareStatement(query)) {
+            preparedStatement.setInt(1, user.getUserID());
+            return preparedStatement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
 }

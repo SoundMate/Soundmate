@@ -7,7 +7,6 @@ package it.soundmate.graphiccontrollers;
 
 import it.soundmate.App;
 import it.soundmate.model.Solo;
-import it.soundmate.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -72,12 +71,12 @@ public class ManageMediaSoloGraphicController {
 
     @FXML
     void onUploadPhotos(ActionEvent event) {
-
+        //Empty method
     }
 
     @FXML
     void onUploadVideos(ActionEvent event) {
-
+        //Empty method
     }
 
     public void initData(Solo soloUser) {

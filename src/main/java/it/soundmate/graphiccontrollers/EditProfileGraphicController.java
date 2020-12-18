@@ -6,15 +6,16 @@
 
 package it.soundmate.graphiccontrollers;
 
-import it.soundmate.logiccontrollers.EditProfileSoloController;
-import it.soundmate.model.User;
+import it.soundmate.App;
+import it.soundmate.logiccontrollers.SoloProfileSoloController;
+import it.soundmate.model.Solo;
 import it.soundmate.utils.ImagePicker;
 import it.soundmate.utils.Navigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -22,6 +23,8 @@ import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.File;
+import java.io.IOException;
+import java.util.Optional;
 
 public class EditProfileGraphicController {
 
@@ -31,9 +34,9 @@ public class EditProfileGraphicController {
     public static final String UPDATE_LAST_NAME = "Update Last Name";
     public static final String CANCEL = "Cancel";
 
-    private final EditProfileSoloController editProfileSoloController = new EditProfileSoloController();
+    SoloProfileSoloController soloProfileSoloController = SoloProfileSoloController.getInstance();
     private final Logger logger = LoggerFactory.getLogger(EditProfileGraphicController.class);
-    private User user;
+    private Solo soloUser;
 
     @FXML
     private StackPane homeStackPane;
@@ -114,11 +117,47 @@ public class EditProfileGraphicController {
     private Button doneBtnLastName;
 
     @FXML
+    private Button backBtn;
+
+    @FXML
     private Button deleteAccountBtn;
 
     @FXML
+    void onBackAction(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("view/SoloProfileSolo.fxml"));
+        Scene scene = null;
+        try {
+            scene = new Scene(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage currentStage = (Stage) this.backBtn.getScene().getWindow();
+        currentStage.setScene(scene);
+        SoloProfileSoloGraphicController soloProfileSoloGraphicController = loader.getController();
+        soloProfileSoloGraphicController.initData(soloUser);
+        currentStage.show();
+    }
+
+    @FXML
     void onDeleteAccountAction(ActionEvent event) {
-        //TODO: Implement delete account
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Account");
+        alert.setHeaderText("Deleting the account is permanent, if you want to use Soundmate\n again you will need to create a new account");
+        alert.setContentText("Are you sure?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent()) {
+            logger.info("Result is present");
+            if (result.get() == ButtonType.OK){
+                logger.info("Result is OK");
+                if (soloProfileSoloController.deleteAccount(this.soloUser)) {
+                    Navigator.navigateToFXMLPage((Stage) this.deleteAccountBtn.getScene().getWindow(), "view/LandingLogin.fxml");
+                } else {
+                    logger.info("Unable to delete Account");
+                }
+            } else {
+                logger.info("Exited confirmation dialog");
+            }
+        }
     }
 
     @FXML
@@ -137,8 +176,8 @@ public class EditProfileGraphicController {
             ImagePicker imagePicker = new ImagePicker();
             File chosenImage = imagePicker.chooseImage(this.profilePicImgView);
             this.profilePicImgView.setFitWidth(100);
-            if(editProfileSoloController.saveProfilePicToDB(chosenImage, user.getUserID())) {
-                logger.info("Saved profile pic for user: {} {}", user.getFirstName(), user.getLastName());
+            if(soloProfileSoloController.saveProfilePicToDB(chosenImage, soloUser.getUserID())) {
+                logger.info("Saved profile pic for user: {} {}", soloUser.getFirstName(), soloUser.getLastName());
             } else logger.info("Profile Pic not saved, error");
         }
     }
@@ -151,7 +190,7 @@ public class EditProfileGraphicController {
         if (event.getSource() == doneBtnLastName) updateInDB(event, doneBtnLastName, updateLastNameBtn, updateLastNameTextField, lastNameLabel, UPDATE_LAST_NAME);
     }
 
-    private static void updateInDB(ActionEvent event, Button doneBtn, Button updateBtn, TextField updateTextField, Label label, String btnText) {
+    private void updateInDB(ActionEvent event, Button doneBtn, Button updateBtn, TextField updateTextField, Label label, String btnText) {
         if (event.getSource() == doneBtn && updateBtn.getText().equals(CANCEL)) {
             if (updateTextField.getText().isEmpty()) {
                 updateTextField.setPromptText("Text field is empty");
@@ -160,7 +199,30 @@ public class EditProfileGraphicController {
                 updateTextField.setVisible(false);
                 doneBtn.setVisible(false);
                 updateBtn.setText(btnText);
-                //TODO: Update to DB
+                switch (btnText) {
+                    case UPDATE_EMAIL:
+                        if (soloProfileSoloController.updateEmail(soloUser, updateTextField.getText())) {
+                            logger.info("Updated email in DB ({}) for user {}", soloUser.getUserID(), updateTextField.getText());
+                        }
+                        break;
+                    case UPDATE_PASSWORD:
+                        if (soloProfileSoloController.updatePassword(soloUser, updateTextField.getText())) {
+                            logger.info("Updated password in DB ({}) for user {}", soloUser.getUserID(), updateTextField.getText());
+                        }
+                        break;
+                    case UPDATE_FIRST_NAME:
+                        if (soloProfileSoloController.updateFirstName(soloUser, updateTextField.getText())) {
+                            logger.info("Updated first name in DB ({}) for user {}", soloUser.getUserID(), updateTextField.getText());
+                        }
+                        break;
+                    case UPDATE_LAST_NAME:
+                        if (soloProfileSoloController.updateLastName(soloUser, updateTextField.getText())) {
+                            logger.info("Updated last name in DB ({}) for user {}", soloUser.getUserID(), updateTextField.getText());
+                        }
+                        break;
+                    default:
+                        logger.info("Unable to update in DB");
+                }
             }
         }
     }
@@ -227,8 +289,8 @@ public class EditProfileGraphicController {
         }
     }
 
-    void initData(User user) {
-        this.user = user;
+    void initData(Solo user) {
+        this.soloUser = user;
         //Text Fields invisible
         updateEmailTextField.setVisible(false);
         updateFirstNameTextField.setVisible(false);

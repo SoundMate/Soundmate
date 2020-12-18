@@ -220,7 +220,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="42.0">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="42.0">
                            <children>
                               <Label text="Password:" textFill="WHITE">
                                  <font>
@@ -248,7 +248,7 @@
                               <Button fx:id="doneBtnPassword" mnemonicParsing="false" onAction="#onDoneButtonAction" style="-fx-background-color: #00b540;" text="Done" textFill="WHITE" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="68.0">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="68.0">
                            <children>
                               <Label text="First Name:" textFill="WHITE">
                                  <font>
@@ -276,7 +276,7 @@
                               <Button fx:id="doneBtnFirstName" mnemonicParsing="false" onAction="#onDoneButtonAction" style="-fx-background-color: #00b540;" text="Done" textFill="WHITE" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="93.0">
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="93.0">
                            <children>
                               <Label text="Last Name:" textFill="WHITE">
                                  <font>
@@ -310,14 +310,19 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="deleteAccountBtn" mnemonicParsing="false" onAction="#onDeleteAccountAction" style="-fx-background-color: rgb(255,0,0);" text="Delete Account" textFill="WHITE">
-               <font>
-                  <Font size="11.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="25.0" top="35.0" />
-               </VBox.margin>
-            </Button>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="backBtn" mnemonicParsing="false" onAction="#onBackAction" style="-fx-background-color: #00b540;" text="Back To Profile" textFill="WHITE" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="deleteAccountBtn" mnemonicParsing="false" onAction="#onDeleteAccountAction" style="-fx-background-color: rgb(255,0,0);" text="Delete Account" textFill="WHITE">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <Region HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
          </children>
       </VBox>
    </center>
